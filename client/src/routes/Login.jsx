@@ -23,10 +23,7 @@ const Login = () => {
         Login
       </h2>
       <form onSubmit={handleSubmit} className="p-4 md:p-0">
-        <label
-          htmlFor="username"
-          className="block text-sm font-medium leading-5 "
-        >
+        <label htmlFor="email" className="block text-sm font-medium leading-5 ">
           Email
         </label>
         <div className="mt-1 relative rounded-md shadow-sm">

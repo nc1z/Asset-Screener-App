@@ -36,7 +36,7 @@ const Login = () => {
             value={email}
             placeholder="Jake@test.com"
             onChange={(e) => setEmail(e.target.value)}
-            className="form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neob-green-400"
           />
         </div>
         <label
@@ -52,17 +52,17 @@ const Login = () => {
             value={password}
             placeholder="Enter your password"
             onChange={(e) => setPassword(e.target.value)}
-            className="form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neob-green-400"
           />
         </div>
         <div className="mt-6">
           <button
             type="submit"
-            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-neob-green-400 hover:bg-neob-green-600"
           >
             <span className="absolute left-0 inset-y-0 flex items-center pl-3">
               <svg
-                className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 transition ease-in-out duration-150"
+                className="h-5 w-5 text-white transition ease-in-out duration-150"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >

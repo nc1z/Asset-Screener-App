@@ -25,7 +25,12 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #3c926e;
+  color: #43a27a;
+}
+
+input {
+  background-color: white;
+  color: #110d0a;
 }
 
 body {

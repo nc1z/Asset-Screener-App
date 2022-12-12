@@ -71,7 +71,7 @@ const Dashboard = () => {
           assets.map((asset) => (
             <tr
               key={asset.id}
-              className="border-b border-slate-500/20 text-gray-800"
+              className="border-b border-slate-500/20 text-gray-800 hover:bg-gray-500/10"
             >
               <td className="px-4 py-2">{asset.name}</td>
               <td className="px-4 py-2 uppercase">{asset.symbol}</td>

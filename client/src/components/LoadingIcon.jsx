@@ -2,7 +2,7 @@ import React from "react";
 
 const LoadingIcon = () => {
   return (
-    <div role="status" className="mt-36">
+    <div role="status">
       <svg
         aria-hidden="true"
         className="mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-green-600"

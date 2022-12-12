@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import Saved from "./Saved";
 import LoadingIcon from "./LoadingIcon";
+import ErrorDisplay from "./ErrorDisplay";
 
 const Dashboard = () => {
   const [assets, setAssets] = useState("");
@@ -30,10 +31,14 @@ const Dashboard = () => {
 
   if (!assets) {
     return (
-      <div className="container mx-auto flex justify-center">
+      <div className="container mx-auto flex justify-center mt-36">
         <LoadingIcon />
       </div>
     );
+  }
+
+  if (error) {
+    return <ErrorDisplay error={error} />;
   }
 
   return (

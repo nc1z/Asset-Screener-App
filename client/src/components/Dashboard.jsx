@@ -32,7 +32,7 @@ const Dashboard = () => {
   }
 
   return (
-    <table className="w-full my-20 text-sm text-left text-gray-700 dark:text-gray-400 border-0 rounded-2xl bg-gradient-to-r from-slate-50/75 via-zinc-50/75 to-gray-50/75 backdrop-blur">
+    <table className="w-full my-20 text-sm text-left text-gray-700 dark:text-gray-400">
       <caption className="p-5 text-lg font-semibold text-left text-gray-900">
         Crypto Dashboard
         <p className="mt-1 text-sm font-normal text-gray-700">
@@ -74,7 +74,7 @@ const Dashboard = () => {
                 style={
                   asset.price_change_24h < 0
                     ? { color: "red" }
-                    : { color: "lime" }
+                    : { color: "green" }
                 }
               >
                 {asset.price_change_24h.toFixed(7)}
@@ -82,7 +82,7 @@ const Dashboard = () => {
               <td className="px-4 py-2">
                 ${asset.market_cap.toLocaleString()}
               </td>
-              <td>
+              <td className="px-4 py-2">
                 <Saved />
               </td>
             </tr>

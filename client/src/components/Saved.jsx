@@ -11,9 +11,9 @@ const Saved = () => {
   return (
     <>
       {saved ? (
-        <BsFillBookmarkCheckFill className="mx-auto" onClick={handleSave} />
+        <BsFillBookmarkCheckFill onClick={handleSave} />
       ) : (
-        <FaRegBookmark className="mx-auto" onClick={handleSave} />
+        <FaRegBookmark onClick={handleSave} />
       )}
     </>
   );

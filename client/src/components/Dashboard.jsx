@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import Saved from "./Saved";
+import LoadingIcon from "./LoadingIcon";
 
 const Dashboard = () => {
   const [assets, setAssets] = useState("");
@@ -28,7 +29,11 @@ const Dashboard = () => {
   }, []);
 
   if (!assets) {
-    return <div>loading...</div>;
+    return (
+      <div className="container mx-auto flex justify-center">
+        <LoadingIcon />
+      </div>
+    );
   }
 
   return (

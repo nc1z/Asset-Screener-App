@@ -4,6 +4,7 @@ import axios from "axios";
 
 const UpdateUserForm = () => {
   const [password, setPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleUpdate = async () => {
@@ -23,7 +24,7 @@ const UpdateUserForm = () => {
   return (
     <div className="mx-auto mt-24 max-w-sm">
       <h2 className="text-center mt-2 text-xl font-medium leading-7 sm:mt-3 sm:text-2xl">
-        Update user details
+        Update User Details
       </h2>
       <form onSubmit={handleSubmit} className="p-4 md:p-0">
         <label htmlFor="email" className="block text-sm font-medium leading-5 ">
@@ -33,17 +34,16 @@ const UpdateUserForm = () => {
           <input
             id="email"
             type="email"
-            value="placeholder@test.com"
-            placeholder="Jake@test.com"
-            readonly
-            className="form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neob-green-400"
+            readonly="readonly"
+            placeholder="replacethiswithuseremail@test.com"
+            className="read-only:bg-gray-100 form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none active:cursor-not-allowed"
           />
         </div>
         <label
           htmlFor="password"
           className="block text-sm font-medium leading-5 mt-3"
         >
-          Password
+          Current Password
         </label>
         <div className="mt-1 relative rounded-md shadow-sm">
           <input
@@ -52,6 +52,22 @@ const UpdateUserForm = () => {
             value={password}
             placeholder="Enter your password"
             onChange={(e) => setPassword(e.target.value)}
+            className="form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neob-green-400"
+          />
+        </div>
+        <label
+          htmlFor="password"
+          className="block text-sm font-medium leading-5 mt-3"
+        >
+          New Password
+        </label>
+        <div className="mt-1 relative rounded-md shadow-sm">
+          <input
+            id="password"
+            type="password"
+            value={password}
+            placeholder="Enter your password"
+            onChange={(e) => setNewPassword(e.target.value)}
             className="form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neob-green-400"
           />
         </div>
@@ -73,7 +89,7 @@ const UpdateUserForm = () => {
                 />
               </svg>
             </span>
-            Change Password
+            Confirm Change
           </button>
         </div>
       </form>

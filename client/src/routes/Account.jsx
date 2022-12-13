@@ -1,5 +1,6 @@
 import React from "react";
 import UpdateUserForm from "../components/UpdateUserForm";
+import UserDetails from "../components/UserDetails";
 
 const Account = () => {
   // Import user details (maybe from context?)
@@ -7,6 +8,7 @@ const Account = () => {
   return (
     <div>
       <UpdateUserForm />
+      <UserDetails />
     </div>
   );
 };

@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     // Enter logout logic here
-    console.log("Logged out");
+    await console.log("Logged out");
+    navigate("/");
   };
   return (
     <nav className="bg-white px-2 py-2.5 md:py-1 dark:bg-zinc-800 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">

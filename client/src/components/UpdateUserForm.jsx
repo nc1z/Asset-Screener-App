@@ -33,7 +33,7 @@ const UpdateUserForm = () => {
           <input
             id="email"
             type="email"
-            value={email}
+            value="placeholder@test.com"
             placeholder="Jake@test.com"
             readonly
             className="form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neob-green-400"

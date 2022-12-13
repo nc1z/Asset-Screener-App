@@ -63,6 +63,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/home"
+                onClick={() => setMenuOpen(!menuOpen)}
                 className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:dark:hover:text-white dark:text-gray-200 dark:hover:bg-zinc-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 md:hover:underline hover:underline-offset-8 hover:decoration-emerald-600"
               >
                 Home
@@ -71,6 +72,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/dashboard"
+                onClick={() => setMenuOpen(!menuOpen)}
                 className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:dark:hover:text-white dark:text-gray-200 dark:hover:bg-zinc-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 md:hover:underline hover:underline-offset-8 hover:decoration-emerald-600"
               >
                 Dashboard
@@ -79,6 +81,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/watchlist"
+                onClick={() => setMenuOpen(!menuOpen)}
                 className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:dark:hover:text-white dark:text-gray-200 dark:hover:bg-zinc-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 md:hover:underline hover:underline-offset-8 hover:decoration-emerald-600"
               >
                 Watchlist
@@ -87,6 +90,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/account"
+                onClick={() => setMenuOpen(!menuOpen)}
                 className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:dark:hover:text-white dark:text-gray-200 dark:hover:bg-zinc-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 md:hover:underline hover:underline-offset-8 hover:decoration-emerald-600"
               >
                 Account

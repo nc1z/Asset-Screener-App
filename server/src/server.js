@@ -2,14 +2,16 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
+import seed from "./models/seed.js";
 
 dotenv.config();
 mongoose.set("strictQuery", false);
 
+const MONGO_URI = process.env.MONGO_URI;
+
 const main = async () => {
-  // Connect to db
-  //   await mongoose.connect();
-  //   console.log("Connected to fakeDB");
+    await mongoose.connect(MONGO_URI);
+    console.log("Connected to fakeDB");
 
   const PORT = process.env.PORT || 8080;
   const app = express();
@@ -21,6 +23,7 @@ const main = async () => {
       allowedHeaders: ["Content-Type", "Authorization", "x-access-token"],
     })
   );
+  app.use("/seed", seed);
 
   app.listen(PORT, () => {
     console.log(`Now listening to port ${PORT}`);

@@ -51,6 +51,7 @@ const Login = () => {
             type="password"
             value={password}
             placeholder="Enter your password"
+            minlength="8"
             onChange={(e) => setPassword(e.target.value)}
             className="form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neob-green-400"
           />

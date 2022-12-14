@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import ErrorMessage from "./ErrorMessage";
 
 const TicketForm = () => {
   const [asset, setAsset] = useState("BTC");
@@ -27,11 +28,7 @@ const TicketForm = () => {
       <h2 className="text-center mt-2 text-xl font-medium leading-7 sm:mt-3 sm:text-2xl">
         Create a Ticket
       </h2>
-      {error ? (
-        <div className="max-w-max mx-auto mt-3 text-white bg-red-500/80 font-medium">
-          {error}
-        </div>
-      ) : null}
+      {error && <ErrorMessage error={error} />}
       <form onSubmit={handleSubmit} className="p-4 md:p-0">
         <label
           htmlFor="TicketId"

@@ -2,29 +2,23 @@
 
 <!-- PROJECT LOGO -->
 
-## Project Banner Here
-
-![defaultbanner](https://user-images.githubusercontent.com/111836326/200166993-b882b92f-cbc7-4232-95da-025aef6bb906.png)
+![image](https://user-images.githubusercontent.com/111836326/207625959-7d0040bb-fe5b-48b6-b3ea-0a0291d76730.png)
 
 <br />
-
 <div align="center">
-  <a href="https://github.com/nc1z/">
-  Project Logo Here
-  </a>
 <h3 align="center">Crypto Asset Screener</h3>
 
   <p align="center">
-    Crypto Asset Screener App, with CRUD functionality. 
+    Crypto Asset Screener App, with full CRUD functionality. 
     <br />
-    <a href="https://github.com/nc1z/"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/nc1z/Asset-Screener-App"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/nc1z/">View Demo</a>
+    <a href="https://github.com/nc1z/Asset-Screener-App">View Demo</a>
     ·
-    <a href="https://github.com/nc1z/">Report Bug</a>
+    <a href="https://github.com/nc1z/Asset-Screener-App">Report Bug</a>
     ·
-    <a href="https://github.com/nc1z/">Request Feature</a>
+    <a href="https://github.com/nc1z/Asset-Screener-App">Request Feature</a>
   </p>
 </div>
 
@@ -66,8 +60,8 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 - ![HTML5 Badge](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=fff&style=for-the-badge)
 - ![CSS3 Badge](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=fff&style=for-the-badge)
 - ![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=for-the-badge)
-- ![Heroku Badge](https://img.shields.io/badge/Heroku-430098?logo=heroku&logoColor=fff&style=for-the-badge)
 - ![Netlify Badge](https://img.shields.io/badge/Netlify-00C7B7?logo=netlify&logoColor=fff&style=for-the-badge)
+- Cyclic for Server Deployment
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -78,7 +72,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 - [x] Completed Task
 - [] Uncompleted Task
 
-See the [open issues](https://github.com/nc1z/) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/nc1z/Asset-Screener-App) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -86,9 +80,10 @@ See the [open issues](https://github.com/nc1z/) for a full list of proposed feat
 
 ## Contact
 
-_Your Email Here_
+- https://github.com/desmondtansl
+- https://github.com/nc1z
 
-Project Link: https://github.com/nc1z/
+Project Link: https://github.com/nc1z/Asset-Screener-App
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -96,6 +91,6 @@ Project Link: https://github.com/nc1z/
 
 ## Acknowledgments
 
-- <a href="">API Link</a>
+- <a href="https://www.coingecko.com/en/api/documentation">Coingecko</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

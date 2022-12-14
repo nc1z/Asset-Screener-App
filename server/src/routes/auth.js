@@ -2,6 +2,7 @@ import express from "express";
 import { body, validationResult } from "express-validator";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
+import JWT from "jsonwebtoken";
 
 const router = express.Router();
 
@@ -42,6 +43,23 @@ async (req,res) => {
         password: hashedPassword
     });
 
-    res.json(user);
+    const token = await JWT.sign(
+        {email: newUser.email},
+        process.env.JWT_SECRET,
+        {
+            expiresIn: "3h"
+        }
+    )
+
+    res.json({
+        errors: "",
+        data: {
+            token,
+            user: {
+                id: newUser.id,
+                email: newUser.email
+            }
+        }
+    });
 });
 export default router;

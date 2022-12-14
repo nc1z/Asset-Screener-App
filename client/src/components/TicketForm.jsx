@@ -2,17 +2,20 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import ErrorMessage from "./ErrorMessage";
+import { useNavigate } from "react-router-dom";
 
 const TicketForm = () => {
   const [asset, setAsset] = useState("BTC");
   const [order, setOrder] = useState("Allocate");
   const [quantity, setQuantity] = useState(0);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const submitTicket = async () => {
     try {
       // axios here
       console.log(asset, order, quantity);
+      navigate("/portfolio");
     } catch (error) {
       console.log(error.message);
       setError(error.message);

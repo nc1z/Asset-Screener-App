@@ -1,7 +1,8 @@
 import React from "react";
+import TicketForm from "../components/TicketForm";
 
 const Ticket = () => {
-  return <div className="mt-36">Tickettesting</div>;
+  return <TicketForm />;
 };
 
 export default Ticket;

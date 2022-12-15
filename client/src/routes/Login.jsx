@@ -1,19 +1,50 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
+import ErrorMessage from "../components/ErrorMessage";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [user, setUser] = UserAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const response = await axios.post("http://localhost:8080/auth/login", {
+      email,
+      password,
+    });
 
-    // Login Authentication Code Here
+    if (!response) {
+      return setError("Error: invalid server response");
+    }
 
+    if (response.error) {
+      return setError(response.error);
+    }
+
+    // Set global user state on successful login
+    setUser({
+      data: {
+        id: response.data.user.id,
+        email: response.data.user.email,
+      },
+      error: null,
+      loading: false,
+    });
+
+    // Storing JWT in local storage
+    localStorage.setItem("token", response.data.token);
+
+    // Update axios header with token
+    axios.defaults.common["authorization"] = `Bearer ${response.data.token}`;
+
+    // On Success
     setEmail("");
     setPassword("");
-    // On Success
     navigate("/home");
   };
 
@@ -25,6 +56,7 @@ const Login = () => {
       <h2 className="text-center mt-2 text-xl font-medium leading-7 sm:mt-3 sm:text-2xl">
         Login
       </h2>
+      {error && <ErrorMessage error={error} />}
       <form onSubmit={handleSubmit} className="p-4 md:p-0">
         <label htmlFor="email" className="block text-sm font-medium leading-5 ">
           Email

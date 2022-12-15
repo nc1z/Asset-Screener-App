@@ -4,9 +4,8 @@ import Portfolio from "../models/portfolio.js";
 import Watchlist from "../models/watchlist.js";
 
 const router = express.Router();
-// rmb to add checkAuth here
 
-router.get("/watchlist", async(req,res) => {
+router.get("/watchlist", checkAuth, async(req,res) => {
     try {
         const userWatchlist = await Watchlist.findOne({email: req.user})
         if (!userWatchlist) {
@@ -27,13 +26,13 @@ router.get("/watchlist", async(req,res) => {
     }
 });
 
-router.get("/portfolio", async(req,res) => {
+router.get("/portfolio", checkAuth, async(req,res) => {
     try {
         const userPortfolio = await Portfolio.findOne({email: req.user})
         if (!userPortfolio) {
             return res.status(400).json({
                 data: "",
-                error: "No Watchlist Found"
+                error: "No Portfolio Found"
             })
         }
         return res.status(200).json({

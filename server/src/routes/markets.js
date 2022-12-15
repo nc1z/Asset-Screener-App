@@ -3,9 +3,8 @@ import checkAuth from "../middleware/checkAuth.js";
 import axios from "axios";
 
 const router = express.Router();
-// rmb to add checkAuth here
 
-router.get("/crypto", async(req,res) => {
+router.get("/crypto", checkAuth, async(req,res) => {
     try {
         const response = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=50&page=1&sparkline=false", {
             headers: {

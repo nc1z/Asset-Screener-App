@@ -3,8 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
 import seed from "./models/seed.js";
-import Signup from "./routes/Signup.js";
-import Login from "./routes/Login.js";
+import auth from "./routes/auth.js";
 
 dotenv.config();
 mongoose.set("strictQuery", false);
@@ -26,8 +25,7 @@ const main = async () => {
     })  
   );
   app.use("/seed", seed);
-  app.use("/", Signup);
-  app.use("/", Login);
+  app.use("/auth", auth);
 
   app.listen(PORT, () => {
     console.log(`Now listening to port ${PORT}`);

@@ -36,7 +36,7 @@ const Login = () => {
         localStorage.setItem("token", response.data.token);
 
         // Update axios header with token
-        axios.defaults.common[
+        axios.defaults.headers.common[
           "authorization"
         ] = `Bearer ${response.data.token}`;
 

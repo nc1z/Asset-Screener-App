@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
-import seed from "./models/seed.js";
 import auth from "./routes/auth.js";
 
 dotenv.config();
@@ -24,7 +23,6 @@ const main = async () => {
       allowedHeaders: ["Content-Type", "Authorization", "x-access-token"],
     })  
   );
-  app.use("/seed", seed);
   app.use("/auth", auth);
 
   app.listen(PORT, () => {

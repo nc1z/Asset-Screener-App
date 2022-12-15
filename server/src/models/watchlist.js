@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const userSchema = new Schema(
+const watchlistSchema = new Schema(
   {
     email: {
       type: String,
@@ -11,13 +11,15 @@ const userSchema = new Schema(
       required: true,
       unique: true
     },
-    password: {
-      type: String,
-      minLength: 8,
-      required: true,
-    },
+    items: [
+        {
+            symbol: String,
+            coin: String,
+            image: String,
+        }
+    ]
   },
   { timestamps: true }
 );
 
-export default mongoose.model("User", userSchema);
+export default mongoose.model("Watchlist", watchlistSchema);

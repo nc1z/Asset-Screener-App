@@ -28,8 +28,8 @@ export const UserProvider = ({ children }) => {
     if (!response.data.user) {
       return setUser({
         data: null,
-        loading: false,
         error: response.error,
+        loading: false,
       });
     }
 
@@ -38,8 +38,8 @@ export const UserProvider = ({ children }) => {
         id: response.data.user.id,
         email: response.data.user.email,
       },
-      loading: false,
       error: null,
+      loading: false,
     });
   };
 
@@ -49,8 +49,8 @@ export const UserProvider = ({ children }) => {
     } else {
       setUser({
         data: null,
-        loading: false,
         error: null,
+        loading: false,
       });
     }
   }, []);

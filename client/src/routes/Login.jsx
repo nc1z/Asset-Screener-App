@@ -14,10 +14,13 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8080/auth/login", {
-        email,
-        password,
-      });
+      const { data: response } = await axios.post(
+        "http://localhost:8080/auth/login",
+        {
+          email,
+          password,
+        }
+      );
       if (response.data) {
         // Set global user state on successful login
         setUser({

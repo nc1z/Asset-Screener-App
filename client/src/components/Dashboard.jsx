@@ -19,7 +19,10 @@ const Dashboard = () => {
       }
     } catch (error) {
       console.log(error.message);
-      setError(error.message);
+      console.log(error.response.data.errors);
+      setError(error.response.data.errors);
+      // console.log(error.response.data.error);
+      // setError(error.response.data.error);
     }
   };
 

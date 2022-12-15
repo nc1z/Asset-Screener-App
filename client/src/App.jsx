@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Portfolio from "./routes/Portfolio";
 import Ticket from "./routes/Ticket";
 import { UserProvider } from "./context/AuthContext";
+import ErrorDisplay from "./components/ErrorDisplay";
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
         <Route path="/watchlist" element={<Watchlist />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/portfolio/ticket" element={<Ticket />} />
+        <Route
+          path="*"
+          element={<ErrorDisplay error={"Route does not exist"} />}
+        />
       </Routes>
     </UserProvider>
   );

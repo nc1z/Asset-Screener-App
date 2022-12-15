@@ -13,39 +13,41 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.post("http://localhost:8080/auth/login", {
         email,
         password,
       });
+      if (response.data) {
+        // Set global user state on successful login
+        setUser({
+          data: {
+            id: response.data.user.id,
+            email: response.data.user.email,
+          },
+          error: null,
+          loading: false,
+        });
+
+        // Storing JWT in local storage
+        localStorage.setItem("token", response.data.token);
+
+        // Update axios header with token
+        axios.defaults.common[
+          "authorization"
+        ] = `Bearer ${response.data.token}`;
+
+        // On Success
+        setEmail("");
+        setPassword("");
+        navigate("/home");
+      }
     } catch (error) {
       console.log(error.response.data.errors);
       setError(error.response.data.errors);
       // console.log(error.response.data.error);
       // setError(error.response.data.error);
     }
-
-    // Set global user state on successful login
-    setUser({
-      data: {
-        id: response.data.user.id,
-        email: response.data.user.email,
-      },
-      error: null,
-      loading: false,
-    });
-
-    // Storing JWT in local storage
-    localStorage.setItem("token", response.data.token);
-
-    // Update axios header with token
-    axios.defaults.common["authorization"] = `Bearer ${response.data.token}`;
-
-    // On Success
-    setEmail("");
-    setPassword("");
-    navigate("/home");
   };
 
   return (

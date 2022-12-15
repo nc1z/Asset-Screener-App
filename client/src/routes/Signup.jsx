@@ -36,7 +36,7 @@ const Signup = () => {
         localStorage.setItem("token", response.data.token);
 
         // Update axios header with token
-        axios.defaults.common[
+        axios.defaults.headers.common[
           "authorization"
         ] = `Bearer ${response.data.token}`;
 
@@ -46,8 +46,9 @@ const Signup = () => {
         navigate("/home");
       }
     } catch (error) {
+      console.log(error.message);
       console.log(error.response.data.errors);
-      return setError(error.response.data.errors);
+      setError(error.response.data.errors);
       // console.log(error.response.data.error);
       // setError(error.response.data.error);
     }

@@ -38,9 +38,11 @@ export const UserProvider = ({ children }) => {
         });
       }
     } catch (error) {
+      console.log(error.message);
+      console.log(error.response.data.errors);
       return setUser({
         data: null,
-        error: response.error.data.errors,
+        error: error.response.data.errors,
         loading: false,
       });
     }

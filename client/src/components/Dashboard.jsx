@@ -10,18 +10,19 @@ const Dashboard = () => {
   const [error, setError] = useState("");
 
   const handleFetch = async () => {
-    // TODO: Change shift gecko endpoint to backend & replace with server api
     try {
-      const response = await axios.get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=50&page=1&sparkline=false"
+      const { data: response } = await axios.get(
+        "http://localhost:8080/markets/crypto"
       );
-
       if (response.data) {
-        setAssets(response.data);
+        return setAssets(response.data);
       }
     } catch (error) {
       console.log(error.message);
-      setError(error.message);
+      console.log(error.response.data.errors);
+      setError(error.response.data.errors);
+      // console.log(error.response.data.error);
+      // setError(error.response.data.error);
     }
   };
 
@@ -29,16 +30,16 @@ const Dashboard = () => {
     handleFetch();
   }, []);
 
+  if (error) {
+    return <ErrorDisplay error={error} />;
+  }
+
   if (!assets) {
     return (
       <div className="container mx-auto flex justify-center mt-36">
         <LoadingIcon />
       </div>
     );
-  }
-
-  if (error) {
-    return <ErrorDisplay error={error} />;
   }
 
   return (

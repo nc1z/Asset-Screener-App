@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = UserAuth();
   const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const handleLogout = async () => {
-    // Enter logout logic here
-    await console.log("Logged out");
+  const handleLogout = () => {
+    setUser({
+      data: null,
+      error: null,
+      loading: false,
+    });
+    localStorage.removeItem("token");
     navigate("/");
   };
   return (

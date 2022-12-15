@@ -1,20 +1,57 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import ErrorMessage from "../components/ErrorMessage";
+import { UserAuth } from "../context/AuthContext";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [user, setUser] = UserAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const { data: response } = await axios.post(
+        "http://localhost:8080/auth/signup",
+        {
+          email,
+          password,
+        }
+      );
+      if (response.data) {
+        // Set global user state on successful signup
+        setUser({
+          data: {
+            id: response.data.user.id,
+            email: response.data.user.email,
+          },
+          error: null,
+          loading: false,
+        });
 
-    // Signup Authentication Code Here
+        // Storing JWT in local storage
+        localStorage.setItem("token", response.data.token);
 
-    setEmail("");
-    setPassword("");
-    // On Success
-    navigate("/home");
+        // Update axios header with token
+        axios.defaults.headers.common[
+          "authorization"
+        ] = `Bearer ${response.data.token}`;
+
+        // On Success
+        setEmail("");
+        setPassword("");
+        navigate("/home");
+      }
+    } catch (error) {
+      console.log(error.message);
+      console.log(error.response.data.errors);
+      setError(error.response.data.errors);
+      // console.log(error.response.data.error);
+      // setError(error.response.data.error);
+    }
   };
 
   return (
@@ -25,6 +62,7 @@ const Signup = () => {
       <h2 className="text-center mt-2 text-xl font-medium leading-7 sm:mt-3 sm:text-2xl">
         Signup
       </h2>
+      {error && <ErrorMessage error={error} />}
       <form onSubmit={handleSubmit} className="p-4 md:p-0">
         <label htmlFor="email" className="block text-sm font-medium leading-5 ">
           Email
@@ -52,7 +90,7 @@ const Signup = () => {
             type="password"
             value={password}
             placeholder="Enter your password"
-            minlength="8"
+            minLength="8"
             required
             onChange={(e) => setPassword(e.target.value)}
             className="form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neob-green-400"

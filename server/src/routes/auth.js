@@ -1,8 +1,9 @@
 import express from "express";
 import { body, validationResult } from "express-validator";
-import User from "../models/User.js";
+import User from "../models/user.js";
 import bcrypt from "bcryptjs";
 import JWT from "jsonwebtoken";
+import checkAuth from "../middleware/checkAuth.js";
 
 const router = express.Router();
 
@@ -110,6 +111,20 @@ router.post(
                 }
             }
         });
+});
+
+router.get("/user", checkAuth, async (req,res) => {
+    const user = await User.findOne({email: req.user});
+
+    return res.json({
+        errors: "",
+        data: {
+            user: {
+                id: user.id,
+                email: user.email
+            }
+        }
+    });
 });
 
 export default router;

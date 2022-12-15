@@ -1,4 +1,4 @@
-import User from "./User.js";
+import user from "./user.js";
 
 const seed = async (req,res) => {
     const seedUser = {

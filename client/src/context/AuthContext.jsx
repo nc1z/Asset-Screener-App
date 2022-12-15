@@ -23,7 +23,15 @@ export const UserProvider = ({ children }) => {
 
   // On re-render, state resets, so we fetch user state again
   const fetchUser = async () => {
-    const response = await axios.get("http://localhost:8080/auth/user");
+    try {
+      const response = await axios.get("http://localhost:8080/auth/user");
+    } catch (error) {
+      return setUser({
+        data: null,
+        error: response.error.data.errors,
+        loading: false,
+      });
+    }
 
     if (!response.data.user) {
       return setUser({

@@ -20,10 +20,10 @@ const Signup = () => {
         password,
       });
     } catch (error) {
-      console.log(error.response.data.errors[0].msg);
-      setError(error.response.data.errors[0].msg);
-      // console.log(error.response.data.error[0].msg);
-      // setError(error.response.data.error[0].msg);
+      console.log(error.response.data.errors);
+      setError(error.response.data.errors);
+      // console.log(error.response.data.error);
+      // setError(error.response.data.error);
     }
 
     // Set global user state on successful signup

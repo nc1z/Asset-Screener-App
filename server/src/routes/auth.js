@@ -4,8 +4,89 @@ import User from "../models/user.js";
 import bcrypt from "bcryptjs";
 import JWT from "jsonwebtoken";
 import checkAuth from "../middleware/checkAuth.js";
+import Portfolio from "../models/portfolio.js";
+import Watchlist from "../models/watchlist.js";
 
 const router = express.Router();
+
+router.post(
+    "/signup",
+    body("email").isEmail().withMessage("Invalid email"),
+    body("password").isLength({min: 8}).withMessage("Password should be at least 8 characters"),
+    async (req,res) => {
+        const validationErrors = validationResult(req);
+        if (!validationErrors.isEmpty()) {
+            const errors = validationErrors.array().map(error => {
+                return {
+                    msg: error.msg
+                }
+            });
+            return res.status(400).json({data:"", error: errors})
+        };
+    
+        const { email, password } = req.body;
+    
+        const user = await User.findOne({email});
+    
+        if (user) {
+            return res.status(400).json({
+                data:"",
+                error: [
+                    {
+                        msg: "Email already in use",
+                    },
+                ],
+            })
+        }
+        try {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            
+            const newUser = await User.create({
+                email,
+                password: hashedPassword
+            });
+        
+            const token = await JWT.sign(
+                {email: newUser.email},
+                process.env.JWT_SECRET,
+                {
+                    expiresIn: 86400
+                }
+            )
+    
+            await Portfolio.create({
+                email,
+                currentAssets: [
+                    {name: "BTC", value: 0},
+                    {name: "ETH", value: 0},
+                    {name: "USDT", value: 0},
+                ],
+                tickets: [],
+            });
+    
+            await Watchlist.create({
+                email,
+                items: [],
+            });
+        
+            return res.status(200).json({
+                data: {
+                    token,
+                    user: {
+                        id: newUser.id,
+                        email: newUser.email
+                    }
+                },
+                errors: ""
+            });
+            
+        } catch (error) {
+            return res.status(400).json({
+                data: "",
+                error: error.message
+            });
+        };
+});
 
 router.post("/login", async(req,res) => {
     const { email, password } = req.body;
@@ -54,63 +135,6 @@ router.post("/login", async(req,res) => {
             }
         }
     });
-});
-
-router.post(
-    "/signup",
-    body("email").isEmail().withMessage("Invalid email"),
-    body("password").isLength({min: 8}).withMessage("Password is too short"),
-    async (req,res) => {
-        const validationErrors = validationResult(req);
-        if (!validationErrors.isEmpty()) {
-            const errors = validationErrors.array().map(error => {
-                return {
-                    msg: error.msg
-                }
-            });
-            return res.json({errors, data:""})
-        };
-    
-        const { email, password } = req.body;
-    
-        const user = await User.findOne({email});
-    
-        if (user) {
-            return res.json({
-                errors: [
-                    {
-                        msg: "Email already in use",
-                    },
-                ],
-                data:"",
-            })
-        }
-    
-        const hashedPassword = await bcrypt.hash(password, 10);
-    
-        const newUser = await User.create({
-            email,
-            password: hashedPassword
-        });
-    
-        const token = await JWT.sign(
-            {email: newUser.email},
-            process.env.JWT_SECRET,
-            {
-                expiresIn: "3h"
-            }
-        )
-    
-        res.json({
-            errors: "",
-            data: {
-                token,
-                user: {
-                    id: newUser.id,
-                    email: newUser.email
-                }
-            }
-        });
 });
 
 router.get("/user", checkAuth, async (req,res) => {

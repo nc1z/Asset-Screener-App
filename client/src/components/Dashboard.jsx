@@ -12,9 +12,8 @@ const Dashboard = () => {
   const handleFetch = async () => {
     try {
       const response = await axios.get("http://localhost:8080/markets/crypto");
-
       if (response.data) {
-        setAssets(response.data);
+        return setAssets(response.data);
       }
     } catch (error) {
       console.log(error.message);
@@ -26,16 +25,16 @@ const Dashboard = () => {
     handleFetch();
   }, []);
 
+  if (error) {
+    return <ErrorDisplay error={error} />;
+  }
+
   if (!assets) {
     return (
       <div className="container mx-auto flex justify-center mt-36">
         <LoadingIcon />
       </div>
     );
-  }
-
-  if (error) {
-    return <ErrorDisplay error={error} />;
   }
 
   return (

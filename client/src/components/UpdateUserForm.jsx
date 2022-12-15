@@ -34,7 +34,7 @@ const UpdateUserForm = () => {
           <input
             id="email"
             type="email"
-            readonly="readonly"
+            readOnly="readonly"
             placeholder="replacethiswithuseremail@test.com"
             className="read-only:bg-gray-100 form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none active:cursor-not-allowed"
           />

@@ -25,6 +25,16 @@ export const UserProvider = ({ children }) => {
   const fetchUser = async () => {
     try {
       const response = await axios.get("http://localhost:8080/auth/user");
+      if (response.data.user) {
+        setUser({
+          data: {
+            id: response.data.user.id,
+            email: response.data.user.email,
+          },
+          error: null,
+          loading: false,
+        });
+      }
     } catch (error) {
       return setUser({
         data: null,
@@ -32,23 +42,6 @@ export const UserProvider = ({ children }) => {
         loading: false,
       });
     }
-
-    if (!response.data.user) {
-      return setUser({
-        data: null,
-        error: response.error,
-        loading: false,
-      });
-    }
-
-    setUser({
-      data: {
-        id: response.data.user.id,
-        email: response.data.user.email,
-      },
-      error: null,
-      loading: false,
-    });
   };
 
   useEffect(() => {

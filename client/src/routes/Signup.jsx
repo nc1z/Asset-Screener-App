@@ -14,17 +14,16 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await axios.post("http://localhost:8080/auth/signup", {
-      email,
-      password,
-    });
-
-    if (!response) {
-      return setError("Error: invalid server response");
-    }
-
-    if (response.error) {
-      return setError(response.error);
+    try {
+      const response = await axios.post("http://localhost:8080/auth/signup", {
+        email,
+        password,
+      });
+    } catch (error) {
+      console.log(error.response.data.errors[0].msg);
+      setError(error.response.data.errors[0].msg);
+      // console.log(error.response.data.error[0].msg);
+      // setError(error.response.data.error[0].msg);
     }
 
     // Set global user state on successful signup

@@ -10,11 +10,8 @@ const Dashboard = () => {
   const [error, setError] = useState("");
 
   const handleFetch = async () => {
-    // TODO: Change shift gecko endpoint to backend & replace with server api
     try {
-      const response = await axios.get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=50&page=1&sparkline=false"
-      );
+      const response = await axios.get("http://localhost:8080/markets/crypto");
 
       if (response.data) {
         setAssets(response.data);

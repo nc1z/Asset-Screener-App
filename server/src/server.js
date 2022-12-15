@@ -12,7 +12,7 @@ const MONGO_URI = process.env.MONGO_URI;
 
 const main = async () => {
     await mongoose.connect(MONGO_URI);
-    console.log("Connected to fakeDB");
+    console.log("Connected to mongoDB");
 
   const PORT = process.env.PORT || 8080;
   const app = express();

@@ -8,7 +8,7 @@ const ProtectedRoute = () => {
 
   if (user.loading) {
     return (
-      <div className="mt-36">
+      <div className="mt-36 flex justify-center">
         <LoadingIcon />
       </div>
     );

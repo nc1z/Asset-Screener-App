@@ -9,6 +9,7 @@ import Portfolio from "./routes/Portfolio";
 import Ticket from "./routes/Ticket";
 import { UserProvider } from "./context/AuthContext";
 import ErrorDisplay from "./components/ErrorDisplay";
+import ProtectedRoute from "./ProtectRoute/ProtectedRoute";
 
 function App() {
   return (
@@ -17,11 +18,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/watchlist" element={<Watchlist />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/portfolio/ticket" element={<Ticket />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/watchlist" element={<Watchlist />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio/ticket" element={<Ticket />} />
+        </Route>
         <Route
           path="*"
           element={<ErrorDisplay error={"Route does not exist"} />}

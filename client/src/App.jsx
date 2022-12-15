@@ -7,10 +7,11 @@ import Watchlist from "./routes/Watchlist";
 import Navbar from "./components/Navbar";
 import Portfolio from "./routes/Portfolio";
 import Ticket from "./routes/Ticket";
+import { UserProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <>
+    <UserProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
@@ -21,7 +22,7 @@ function App() {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/portfolio/ticket" element={<Ticket />} />
       </Routes>
-    </>
+    </UserProvider>
   );
 }
 

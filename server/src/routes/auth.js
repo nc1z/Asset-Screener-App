@@ -114,17 +114,24 @@ router.post(
 });
 
 router.get("/user", checkAuth, async (req,res) => {
+    try {
     const user = await User.findOne({email: req.user});
 
-    return res.json({
-        errors: "",
+    return res.status(200).json({
         data: {
             user: {
                 id: user.id,
                 email: user.email
             }
-        }
+        },
+        errors: "",
     });
+    } catch (error) {
+        return res.status(400).json({
+            data: "",
+            error: error.message
+        });
+    }
 });
 
 export default router;

@@ -11,7 +11,9 @@ const Dashboard = () => {
 
   const handleFetch = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/markets/crypto");
+      const { data: response } = await axios.get(
+        "http://localhost:8080/markets/crypto"
+      );
       if (response.data) {
         return setAssets(response.data);
       }

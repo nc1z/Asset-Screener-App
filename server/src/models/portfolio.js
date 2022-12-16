@@ -9,22 +9,22 @@ const portfolioSchema = new Schema(
       trim: true,
       lowercase: true,
       required: true,
-      unique: true
+      unique: true,
     },
     currentAssets: [
-        {
-            name: String,
-            value: Number,
-        }
+      {
+        name: String,
+        value: Number,
+      },
     ],
     tickets: [
-        {
-            ticketid: String,
-            datetime: String,
-            asset: String,
-            order: String,
-            amount: Number,
-        }
+      {
+        ticketid: String,
+        datetime: String,
+        asset: String,
+        order: String,
+        amount: Number,
+      },
     ],
   },
   { timestamps: true }

@@ -12,8 +12,8 @@ mongoose.set("strictQuery", false);
 const MONGO_URI = process.env.MONGO_URI;
 
 const main = async () => {
-    await mongoose.connect(MONGO_URI);
-    console.log("Connected to mongoDB");
+  await mongoose.connect(MONGO_URI);
+  console.log("Connected to mongoDB");
 
   const PORT = process.env.PORT || 8080;
   const app = express();
@@ -23,7 +23,7 @@ const main = async () => {
       origin: "*",
       methods: ["GET", "POST", "PUT", "DELETE"],
       allowedHeaders: ["Content-Type", "Authorization", "x-access-token"],
-    })  
+    })
   );
   app.use("/auth", authRoutes);
   app.use("/markets", marketsRoutes);

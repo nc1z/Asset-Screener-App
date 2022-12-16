@@ -77,7 +77,7 @@ router.post(
                         email: newUser.email
                     }
                 },
-                errors: ""
+                error: ""
             });
             
         } catch (error) {
@@ -96,7 +96,7 @@ router.post("/login", async(req,res) => {
     if (!user) {
         return res.status(403).json({
             data: "",
-            errors: [
+            error: [
                 {
                     msg: "Invalid Credentials"
                 }
@@ -110,7 +110,7 @@ router.post("/login", async(req,res) => {
         if (!isMatch) {
             return res.status(403).json({
                 data: "",
-                errors: [
+                error: [
                     {
                         msg: "Invalid Credentials"
                     }
@@ -134,13 +134,13 @@ router.post("/login", async(req,res) => {
                     email: user.email
                 }
             },
-            errors: ""
+            error: ""
         });
         
     } catch (error) {
         return res.status(400).json({
             data: "",
-            errors: [
+            error: [
                 {
                     msg: error.message
                 }
@@ -160,7 +160,7 @@ router.get("/user", checkAuth, async (req,res) => {
                 email: user.email
             }
         },
-        errors: "",
+        error: "",
     });
     } catch (error) {
         return res.status(400).json({

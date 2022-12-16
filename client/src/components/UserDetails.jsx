@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { HiOutlineExternalLink } from "react-icons/hi";
+import { UserAuth } from "../context/AuthContext";
 
 const UserDetails = () => {
-  // Import user details from context and receive it via props here
+  const [user] = UserAuth();
   return (
     <div className="container mx-auto px-4 overflow-x-auto relative">
       <table className="w-1/2 my-8 text-left mx-auto">
@@ -17,7 +18,7 @@ const UserDetails = () => {
         </thead>
         <tbody>
           <tr>
-            <td>Replacethisemail@test.com</td>
+            <td>{user.data ? user.data.email : "User not found"}</td>
             <td>timestamp</td>
             <td>
               <Link to="/watchlist">

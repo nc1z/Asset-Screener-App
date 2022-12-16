@@ -6,12 +6,12 @@ const checkAuth = async (req, res, next) => {
 
     if (!token) {
         return res.status(403).json({
-            errors: [
+            data: "",
+            error: [
                 {
                     msg: "Unauthorized"
                 }
             ],
-            data: ""
         });
     };
 
@@ -26,12 +26,12 @@ const checkAuth = async (req, res, next) => {
         next()
     } catch (error) {
         return res.status(403).json({
-            errors: [
+            data: "",
+            error: [
                 {
                     msg: "Unauthorized",
                 }
             ],
-            data: ""
         });
     };
 };

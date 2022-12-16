@@ -35,7 +35,7 @@ const Navbar = () => {
         </Link>
         <div className="flex md:order-2">
           <Link to="/account" className="text-white mt-2 mx-4 hidden lg:block">
-            User@email.com
+            {user.data ? user.data.email : "User not found"}
           </Link>
           <button
             type="button"

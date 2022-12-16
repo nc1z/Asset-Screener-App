@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import ErrorDisplay from "./ErrorDisplay";
 import { MdDelete } from "react-icons/md";
 import LoadingIcon from "./LoadingIcon";
+import axios from "axios";
 
 const Watching = () => {
   const [assets, setAssets] = useState("");
@@ -10,13 +11,16 @@ const Watching = () => {
 
   const handleFetch = async () => {
     try {
-      // const response = await axios.get("Backend GET watchlist endpoing");
-      // if (response.data) {
-      //   setAssets(response.data);
-      // }
+      const { data: response } = await axios.get(
+        "http://localhost:8080/details/watchlist"
+      );
+      if (response.data) {
+        setAssets(response.data.items);
+      }
     } catch (error) {
       console.log(error.message);
-      setError(error.message);
+      console.log(error.response.data.error);
+      setError(error.response.data.error);
     }
   };
 

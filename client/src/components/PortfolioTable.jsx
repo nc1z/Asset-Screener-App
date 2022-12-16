@@ -1,11 +1,16 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import ErrorDisplay from "./ErrorDisplay";
+import LoadingIcon from "./LoadingIcon";
 
 const PortfolioTable = () => {
   const [portfolio, setPortfolio] = useState("");
+  const [portfolioValue, setPortfolioValue] = useState(0);
   const [error, setError] = useState("");
+  const [marketData, setMarketData] = useState("");
 
-  const handleFetch = async () => {
+  const FetchPortfolio = async () => {
     try {
       const { data: response } = await axios.get(
         "http://localhost:8080/details/portfolio"
@@ -20,8 +25,51 @@ const PortfolioTable = () => {
     }
   };
 
+  const FetchPrice = async () => {
+    try {
+      const { data: response } = await axios.get(
+        "http://localhost:8080/markets/crypto"
+      );
+      if (response.data) {
+        setMarketData(response.data);
+        if (marketData) {
+          const totalPortfolioValue = portfolio.currentAssets.reduce(
+            (total, asset) => {
+              switch (asset.name) {
+                case "BTC":
+                  const dataBTC = marketData.filter(
+                    (coin) => coin.symbol === "btc"
+                  );
+                  return total + asset.value * dataBTC[0].current_price;
+                case "ETH":
+                  const dataETH = marketData.filter(
+                    (coin) => coin.symbol === "eth"
+                  );
+                  return total + asset.value * dataETH[0].current_price;
+                case "USDT":
+                  const dataUSDT = marketData.filter(
+                    (coin) => coin.symbol === "usdt"
+                  );
+                  return total + asset.value * dataUSDT[0].current_price;
+                default:
+                  return total;
+              }
+            },
+            0
+          );
+          setPortfolioValue(totalPortfolioValue);
+        }
+      }
+    } catch (error) {
+      console.log(error.message);
+      console.log(error.response.data.error);
+      setError(error.response.data.error);
+    }
+  };
+
   useEffect(() => {
-    handleFetch();
+    FetchPortfolio();
+    FetchPrice();
   }, []);
 
   if (error) {
@@ -36,19 +84,19 @@ const PortfolioTable = () => {
     );
   }
   return (
-    <table className="w-full my-20 text-sm text-left text-gray-700 dark:text-gray-400">
-      <caption className="p-5 text-lg font-semibold text-left text-gray-900">
-        Your Portfolio
+    <table className="w-full my-2 text-sm text-left text-gray-700 dark:text-gray-400">
+      <caption className="p-5 text-3xl font-semibold text-left text-gray-900">
+        Your Portfolio: ${portfolio && portfolioValue.toFixed(2)}
         <p className="mt-1 text-sm font-normal text-gray-700">
-          Browse a list of your assets
+          Browse a list of your assets below
         </p>
       </caption>
       <thead className="text-xs text-gray-700 uppercase">
         <tr>
           <th className="px-4 py-2">Asset</th>
-          <th className="px-4 py-2">Current Price</th>
-          <th className="px-4 py-2">Quantity</th>
-          <th className="px-4 py-2">Current Value</th>
+          <th className="px-4 py-2">Total Quantity</th>
+          <th className="px-4 py-2">Last Price (USD)</th>
+          <th className="px-4 py-2">Notional Value (USD)</th>
           <th className="px-4 py-2">Latest Ticket</th>
         </tr>
       </thead>
@@ -56,18 +104,44 @@ const PortfolioTable = () => {
         {portfolio &&
           portfolio.currentAssets.map((asset) => (
             <tr
-              key={asset}
+              key={asset.name}
               className="border-b border-slate-500/20 text-gray-800 hover:bg-gray-500/10"
             >
               <td className="px-4 py-2">{asset.name}</td>
-              <td className="px-4 py-2">$To be updated</td>
               <td className="px-4 py-2">{asset.value}</td>
-              <td className="px-4 py-2">price x value</td>
               <td className="px-4 py-2">
-                {portfolio.tickets[portfolio.tickets.length - 1]}
+                {marketData &&
+                  marketData.filter(
+                    (coin) => coin.symbol.toUpperCase() === asset.name
+                  )[0].current_price}
+              </td>
+              <td className="px-4 py-2">
+                {marketData
+                  ? (
+                      marketData.filter(
+                        (coin) => coin.symbol.toUpperCase() === asset.name
+                      )[0].current_price * asset.value
+                    ).toFixed(2)
+                  : 0}
+              </td>
+              <td className="px-4 py-2">
+                {portfolio.tickets
+                  .filter((ticket) => ticket.asset === asset.name)
+                  .slice(-1)[0]?.ticketid
+                  ? portfolio.tickets
+                      .filter((ticket) => ticket.asset === asset.name)
+                      .slice(-1)[0]?.ticketid
+                  : "-"}
               </td>
             </tr>
           ))}
+        <tr className="border-t border-gray-800 text-gray-800 font-bold hover:bg-gray-500/10">
+          <td className="px-4 py-2">TOTAL</td>
+          <td className="px-4 py-2">-</td>
+          <td className="px-4 py-2">-</td>
+          <td className="px-4 py-2">{portfolioValue.toFixed(2)}</td>
+          <td className="px-4 py-2">-</td>
+        </tr>
       </tbody>
     </table>
   );

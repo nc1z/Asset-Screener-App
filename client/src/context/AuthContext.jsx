@@ -39,10 +39,10 @@ export const UserProvider = ({ children }) => {
       }
     } catch (error) {
       console.log(error.message);
-      console.log(error.response.data.errors);
+      console.log(error.response.data.error);
       return setUser({
         data: null,
-        error: error.response.data.errors,
+        error: error.response.data.error,
         loading: false,
       });
     }

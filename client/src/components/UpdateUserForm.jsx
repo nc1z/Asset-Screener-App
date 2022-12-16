@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { UserAuth } from "../context/AuthContext";
 
 const UpdateUserForm = () => {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [error, setError] = useState("");
+  const [user] = UserAuth();
 
   const handleUpdate = async () => {
     try {
@@ -35,19 +37,19 @@ const UpdateUserForm = () => {
             id="email"
             type="email"
             readOnly="readonly"
-            placeholder="replacethiswithuseremail@test.com"
+            placeholder={user.data ? user.data.email : "-"}
             className="read-only:bg-gray-100 form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none active:cursor-not-allowed"
           />
         </div>
         <label
-          htmlFor="password"
+          htmlFor="oldPassword"
           className="block text-sm font-medium leading-5 mt-3"
         >
           Current Password
         </label>
         <div className="mt-1 relative rounded-md shadow-sm">
           <input
-            id="password"
+            id="oldPassword"
             type="password"
             value={password}
             placeholder="Enter your password"
@@ -56,16 +58,16 @@ const UpdateUserForm = () => {
           />
         </div>
         <label
-          htmlFor="password"
+          htmlFor="newPassword"
           className="block text-sm font-medium leading-5 mt-3"
         >
           New Password
         </label>
         <div className="mt-1 relative rounded-md shadow-sm">
           <input
-            id="password"
+            id="newPassword"
             type="password"
-            value={password}
+            value={newPassword}
             placeholder="Enter your password"
             onChange={(e) => setNewPassword(e.target.value)}
             className="form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neob-green-400"

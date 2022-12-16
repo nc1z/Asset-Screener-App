@@ -11,7 +11,6 @@ const UserDetails = () => {
         <thead className="border-b border-gray-300 text-xs text-gray-700">
           <tr>
             <th>Email</th>
-            <th>Last Logged In</th>
             <th>Watchlist</th>
             <th>Portfolio</th>
           </tr>
@@ -19,7 +18,6 @@ const UserDetails = () => {
         <tbody>
           <tr>
             <td>{user.data ? user.data.email : "User not found"}</td>
-            <td>timestamp</td>
             <td>
               <Link to="/watchlist">
                 <HiOutlineExternalLink />

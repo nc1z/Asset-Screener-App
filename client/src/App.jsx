@@ -35,3 +35,11 @@ function App() {
 }
 
 export default App;
+
+// Current:
+//   - Check for authentication once if entering any private routes
+// Alternative:
+//   - A more secure way would be to wrap every route with ProtectedRoute
+//   - This re-renders and checks for token every route change
+//   - Pros: More secure, if token removed, then unauthorized upon route change
+//   - Cons: Api calls (in AuthContext) on every route change, heavier load on network

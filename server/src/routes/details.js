@@ -59,7 +59,7 @@ router.put("/watchlist", checkAuth, async (req, res) => {
       });
     }
     const ifDuplicate = userWatchlist.items.some(
-      (asset) => asset.symbol == req.body.symbol
+      (asset) => asset.coin == req.body.coin
     );
     if (ifDuplicate) {
       return res.status(400).json({
@@ -76,7 +76,7 @@ router.put("/watchlist", checkAuth, async (req, res) => {
       { email: req.user },
       {
         $push: {
-          watchlist: watchlist,
+          items: watchlist,
         },
         new: true,
       }

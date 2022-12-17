@@ -157,7 +157,6 @@ router.put("/portfolio", checkAuth, async (req, res) => {
         new: true,
       }
     );
-
     if (!updatedPortfolio) {
       return res.status(400).json({
         data: "",
@@ -166,6 +165,47 @@ router.put("/portfolio", checkAuth, async (req, res) => {
     }
     return res.status(200).json({
       data: updatedPortfolio,
+      error: "",
+    });
+  } catch (error) {
+    return res.status(400).json({
+      data: "",
+      error: error.message,
+    });
+  }
+});
+
+router.delete("/watchlist", checkAuth, async (req, res) => {
+  try {
+    const userWatchlist = await Watchlist.findOne({ email: req.user });
+    if (!userWatchlist) {
+      return res.status(400).json({
+        data: "",
+        error: "No Watchlist Found",
+      });
+    }
+    const watchlist = {
+      symbol: req.body.symbol,
+      coin: req.body.coin,
+      image: req.body.image,
+    };
+    const updatedWatchlist = await Watchlist.findOneAndUpdate(
+      { email: req.user },
+      {
+        $pull: {
+          items: watchlist,
+        },
+        new: true,
+      }
+    );
+    if (!updatedWatchlist) {
+      return res.status(400).json({
+        data: "",
+        error: "Watchlist Update Failed",
+      });
+    }
+    return res.status(200).json({
+      data: updatedWatchlist,
       error: "",
     });
   } catch (error) {

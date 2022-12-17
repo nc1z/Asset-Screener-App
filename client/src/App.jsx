@@ -7,17 +7,19 @@ import Watchlist from "./routes/Watchlist";
 import Navbar from "./components/Navbar";
 import Portfolio from "./routes/Portfolio";
 import Ticket from "./routes/Ticket";
-import { UserProvider } from "./context/AuthContext";
+import { UserAuth } from "./context/AuthContext";
 import ErrorDisplay from "./components/ErrorDisplay";
 import ProtectedRoute from "./ProtectRoute/ProtectedRoute";
 
 function App() {
+  const [user] = UserAuth();
+
   return (
-    <UserProvider>
-      <Navbar />
+    <>
+      {user.data && <Navbar />}
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/" element={user.data ? <Home /> : <Login />} />
+        <Route path="/signup" element={user.data ? <Account /> : <Signup />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/home" element={<Home />} />
           <Route path="/account" element={<Account />} />
@@ -30,8 +32,16 @@ function App() {
           element={<ErrorDisplay error={"Route does not exist"} />}
         />
       </Routes>
-    </UserProvider>
+    </>
   );
 }
 
 export default App;
+
+// Current:
+//   - Check for authentication once if entering any private routes
+// Alternative:
+//   - A more secure way would be to wrap every route with ProtectedRoute
+//   - This re-renders and checks for token every route change
+//   - Pros: More secure, if token removed, then unauthorized upon route change
+//   - Cons: Api calls (in AuthContext) on every route change, heavier load on network

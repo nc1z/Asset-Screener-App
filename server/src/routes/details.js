@@ -49,6 +49,56 @@ router.get("/portfolio", checkAuth, async (req, res) => {
   }
 });
 
+router.put("/watchlist", checkAuth, async (req, res) => {
+  try {
+    const userWatchlist = await Watchlist.findOne({ email: req.user });
+    if (!userWatchlist) {
+      return res.status(400).json({
+        data: "",
+        error: "No Watchlist Found",
+      });
+    }
+    const ifDuplicate = userWatchlist.items.some(
+      (asset) => asset.symbol == req.body.symbol
+    );
+    if (ifDuplicate) {
+      return res.status(400).json({
+        data: "",
+        error: "Asset Already in Watchlist",
+      });
+    }
+    const watchlist = {
+      symbol: req.body.symbol,
+      coin: req.body.coin,
+      image: req.body.image,
+    };
+    const updatedWatchlist = await Watchlist.findOneAndUpdate(
+      { email: req.user },
+      {
+        $push: {
+          watchlist: watchlist,
+        },
+        new: true,
+      }
+    );
+    if (!updatedWatchlist) {
+      return res.status(400).json({
+        data: "",
+        error: "Watchlist Update Failed",
+      });
+    }
+    return res.status(200).json({
+      data: updatedWatchlist,
+      error: "",
+    });
+  } catch (error) {
+    return res.status(400).json({
+      data: "",
+      error: error.message,
+    });
+  }
+});
+
 router.put("/portfolio", checkAuth, async (req, res) => {
   try {
     const userPortfolio = await Portfolio.findOne({ email: req.user });

@@ -13,12 +13,21 @@ const TicketForm = () => {
 
   const submitTicket = async () => {
     try {
-      // axios here
-      console.log(asset, order, quantity);
-      navigate("/portfolio");
+      const { data: response } = await axios.put(
+        "http://localhost:8080/details/portfolio",
+        {
+          asset: asset,
+          order: order,
+          amount: quantity,
+        }
+      );
+      if (response.data) {
+        navigate("/portfolio");
+      }
     } catch (error) {
       console.log(error.message);
-      setError(error.message);
+      console.log(error.response.data);
+      setError(error.response.data.error);
     }
   };
 

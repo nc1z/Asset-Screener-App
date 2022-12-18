@@ -16,7 +16,8 @@ const PortfolioTable = () => {
         "http://localhost:8080/details/portfolio"
       );
       if (response.data) {
-        return setPortfolio(response.data);
+        setPortfolio(response.data);
+        return FetchPrice();
       }
     } catch (error) {
       console.log(error.message);
@@ -30,35 +31,33 @@ const PortfolioTable = () => {
       const { data: response } = await axios.get(
         "http://localhost:8080/markets/crypto"
       );
-      if (response.data) {
-        setMarketData(response.data);
-        if (marketData) {
-          const totalPortfolioValue = portfolio.currentAssets.reduce(
-            (total, asset) => {
-              switch (asset.name) {
-                case "BTC":
-                  const dataBTC = marketData.filter(
-                    (coin) => coin.symbol === "btc"
-                  );
-                  return total + asset.value * dataBTC[0].current_price;
-                case "ETH":
-                  const dataETH = marketData.filter(
-                    (coin) => coin.symbol === "eth"
-                  );
-                  return total + asset.value * dataETH[0].current_price;
-                case "USDT":
-                  const dataUSDT = marketData.filter(
-                    (coin) => coin.symbol === "usdt"
-                  );
-                  return total + asset.value * dataUSDT[0].current_price;
-                default:
-                  return total;
-              }
-            },
-            0
-          );
-          setPortfolioValue(totalPortfolioValue);
-        }
+      setMarketData(response.data);
+      if (marketData) {
+        const totalPortfolioValue = portfolio.currentAssets.reduce(
+          (total, asset) => {
+            switch (asset.name) {
+              case "BTC":
+                const dataBTC = marketData.filter(
+                  (coin) => coin.symbol === "btc"
+                );
+                return total + asset.value * dataBTC[0].current_price;
+              case "ETH":
+                const dataETH = marketData.filter(
+                  (coin) => coin.symbol === "eth"
+                );
+                return total + asset.value * dataETH[0].current_price;
+              case "USDT":
+                const dataUSDT = marketData.filter(
+                  (coin) => coin.symbol === "usdt"
+                );
+                return total + asset.value * dataUSDT[0].current_price;
+              default:
+                return total;
+            }
+          },
+          0
+        );
+        setPortfolioValue(totalPortfolioValue);
       }
     } catch (error) {
       console.log(error.message);
@@ -69,7 +68,6 @@ const PortfolioTable = () => {
 
   useEffect(() => {
     FetchPortfolio();
-    FetchPrice();
   }, []);
 
   if (error) {

@@ -85,7 +85,7 @@ const TicketForm = () => {
                 id="asset"
                 required
                 onChange={(e) => setAsset(e.target.value)}
-                className="block w-full h-8 px-4 py-3 border rounded-md bg-white focus:ring-0 focus:ring-transparent focus:outline-none"
+                className="block w-full h-8 border rounded-md bg-white focus:ring-0 focus:ring-transparent focus:outline-none"
               >
                 <option value="">Choose Asset</option>
                 <option value="BTC">BTC</option>
@@ -107,7 +107,7 @@ const TicketForm = () => {
                 id="Order"
                 onChange={(e) => setOrder(e.target.value)}
                 required
-                className="block w-full h-8 px-4 py-3 border rounded-md bg-white focus:ring-0 focus:ring-transparent focus:outline-none"
+                className="block w-full h-8 border rounded-md bg-white focus:ring-0 focus:ring-transparent focus:outline-none"
               >
                 <option value="">Select Transaction</option>
                 <option value="Allocate">Allocate</option>

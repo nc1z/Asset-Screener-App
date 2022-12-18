@@ -46,7 +46,7 @@ const TicketHistory = () => {
           to="/portfolio"
           className="bg-neob-green-600 text-white hover:text-white hover:bg-emerald-600 py-1 px-2 border rounded-lg"
         >
-          Back
+          My Portfolio
         </Link>
         <Link
           to="/portfolio/ticket"

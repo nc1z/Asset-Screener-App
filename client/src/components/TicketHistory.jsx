@@ -70,7 +70,6 @@ const TicketHistory = () => {
               <th className="px-4 py-2">Quantity</th>
               <th className="px-4 py-2">Date/Time of Execution</th>
               <th className="px-4 py-2">Transaction Id</th>
-              <th className="px-4 py-2">Transaction Id</th>
             </tr>
           </thead>
           <tbody>
@@ -85,7 +84,6 @@ const TicketHistory = () => {
                     <td className="px-4 py-2">{ticket.order}</td>
                     <td className="px-4 py-2">{ticket.amount}</td>
                     <td className="px-4 py-2">{ticket.datetime}</td>
-                    <td className="px-4 py-2">{ticket.ticketid}</td>
                     <td className="px-4 py-2">{ticket.ticketid}</td>
                   </tr>
                 ))

@@ -97,7 +97,7 @@ const TicketForm = () => {
 
           <div className="w-1/2">
             <label
-              htmlFor="Asset"
+              htmlFor="Order"
               className="block text-sm font-medium leading-5 mt-3"
             >
               Order Type

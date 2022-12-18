@@ -41,19 +41,7 @@ const Dashboard = () => {
   }
 
   return (
-    <table className="w-full my-20 text-sm text-left text-gray-700 dark:text-gray-400">
-      <caption className="p-5 text-lg font-semibold text-left text-gray-900">
-        Crypto Dashboard
-        <p className="mt-1 text-sm font-normal text-gray-700">
-          Browse a list of Cryptocurrency assets, powered by the{" "}
-          <a
-            href="https://www.coingecko.com/en/api/documentation"
-            target="_blank"
-          >
-            Coingecko Api
-          </a>
-        </p>
-      </caption>
+    <table className="w-full text-sm text-left text-gray-700 dark:text-gray-400">
       <thead className="text-xs text-gray-700 uppercase">
         <tr>
           <th className="px-4 py-2">Symbol</th>
@@ -92,7 +80,7 @@ const Dashboard = () => {
                 ${asset.market_cap.toLocaleString()}
               </td>
               <td className="px-4 py-2">
-                <Saved />
+                <Saved asset={asset} />
               </td>
             </tr>
           ))}

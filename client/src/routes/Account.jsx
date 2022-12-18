@@ -1,13 +1,14 @@
 import React from "react";
-import UpdateUserForm from "../components/UpdateUserForm";
 import UserDetails from "../components/UserDetails";
 
 const Account = () => {
-  // Import user details (maybe from context?)
-  // to obtain email for userform props, and to populate table
   return (
-    <div>
-      <UpdateUserForm />
+    <div className="flex flex-col items-center my-20">
+      <img
+        src="../../images/undraw-profile.svg"
+        className="w-2/3 h-1/2 md:w-1/2"
+      />
+      <h2 className="font-bold text-center text-2xl">My Profile</h2>
       <UserDetails />
     </div>
   );

@@ -42,8 +42,18 @@ const TicketHistory = () => {
   return (
     <div className="container mx-auto my-20">
       <div className="flex gap-4 mx-5">
-        <Link to="/portfolio">Back</Link>
-        <Link to="/portfolio/ticket">New Ticket</Link>
+        <Link
+          to="/portfolio"
+          className="bg-neob-green-600 text-white hover:text-white hover:bg-emerald-600 py-1 px-2 border rounded-lg"
+        >
+          Back
+        </Link>
+        <Link
+          to="/portfolio/ticket"
+          className="bg-neob-green-600 text-white hover:text-white hover:bg-emerald-600 py-1 px-2 border rounded-lg"
+        >
+          New Ticket
+        </Link>
       </div>
       <div className="p-5 text-3xl font-semibold text-left text-gray-900">
         <h2>Transaction history</h2>

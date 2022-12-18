@@ -44,7 +44,7 @@ const Saved = ({ asset }) => {
           className={disabled ? "pointer-events-none" : "cursor-pointer"}
         />
       ) : (
-        <FaRegBookmark onClick={handleSave} />
+        <FaRegBookmark onClick={handleSave} className="hover:cursor-pointer" />
       )}
     </>
   );

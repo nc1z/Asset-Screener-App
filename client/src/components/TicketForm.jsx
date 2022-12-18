@@ -54,7 +54,7 @@ const TicketForm = () => {
             type="text"
             readOnly="readonly"
             placeholder="Auto-generated"
-            className="read-only:bg-gray-100 form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none active:cursor-not-allowed"
+            className="read-only:bg-gray-100 form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none active:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:outline-none focus:border-slate-500"
           />
         </div>
         <label
@@ -69,7 +69,7 @@ const TicketForm = () => {
             type="text"
             readOnly="readonly"
             placeholder="Auto-generated"
-            className="read-only:bg-gray-100 form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none active:cursor-not-allowed"
+            className="read-only:bg-gray-100 form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none active:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:outline-none focus:border-slate-500"
           />
         </div>
         <div className="flex gap-2">
@@ -85,7 +85,7 @@ const TicketForm = () => {
                 id="asset"
                 required
                 onChange={(e) => setAsset(e.target.value)}
-                className="block w-full h-8 px-4 py-3 border rounded-md bg-white"
+                className="block w-full h-8 px-4 py-3 border rounded-md bg-white focus:ring-0 focus:ring-transparent focus:outline-none"
               >
                 <option value="">Choose Asset</option>
                 <option value="BTC">BTC</option>
@@ -107,7 +107,7 @@ const TicketForm = () => {
                 id="Order"
                 onChange={(e) => setOrder(e.target.value)}
                 required
-                className="block w-full h-8 px-4 py-3 border rounded-md bg-white"
+                className="block w-full h-8 px-4 py-3 border rounded-md bg-white focus:ring-0 focus:ring-transparent focus:outline-none"
               >
                 <option value="">Select Transaction</option>
                 <option value="Allocate">Allocate</option>

@@ -98,7 +98,7 @@ const PortfolioTable = () => {
   return (
     <>
       <div className="p-5 text-3xl font-semibold text-left text-gray-900">
-        <h2>Your Portfolio: ${portfolio && portfolioValue.toFixed(2)}</h2>
+        <h2>My Portfolio: ${portfolio && portfolioValue.toFixed(2)}</h2>
         <p className="mt-1 text-sm font-normal text-gray-700">
           Browse a list of your assets below
         </p>

@@ -11,6 +11,8 @@ import { UserAuth } from "./context/AuthContext";
 import ErrorDisplay from "./components/ErrorDisplay";
 import ProtectedRoute from "./ProtectRoute/ProtectedRoute";
 import TicketHistory from "./components/TicketHistory";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [user] = UserAuth();
@@ -34,6 +36,7 @@ function App() {
           element={<ErrorDisplay error={"Route does not exist"} />}
         />
       </Routes>
+      <ToastContainer />
     </>
   );
 }

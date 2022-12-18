@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import ErrorMessage from "./ErrorMessage";
 import { useNavigate } from "react-router-dom";
+import notify from "../functions/notify";
 
 const TicketForm = () => {
   const [asset, setAsset] = useState("BTC");
@@ -22,12 +23,20 @@ const TicketForm = () => {
         }
       );
       if (response.data) {
+        notify({
+          success: "Success. Transaction completed.",
+          error: "",
+        });
         navigate("/portfolio/history");
       }
     } catch (error) {
       console.log(error.message);
       console.log(error.response.data);
       setError(error.response.data.error);
+      notify({
+        success: "",
+        error: `Transaction failed. ${error.message}`,
+      });
     }
   };
 

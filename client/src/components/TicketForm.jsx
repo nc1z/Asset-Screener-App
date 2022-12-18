@@ -131,7 +131,7 @@ const TicketForm = () => {
             placeholder="0.5"
             required
             onChange={(e) => setQuantity(e.target.value)}
-            className="read-only:bg-gray-100 form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none active:cursor-not-allowed"
+            className="form-input py-3 px-4 block w-full transition duration-150 ease-in-out rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neob-green-400"
           />
         </div>
 

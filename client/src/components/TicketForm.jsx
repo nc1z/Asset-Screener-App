@@ -45,7 +45,7 @@ const TicketForm = () => {
     submitTicket();
   };
   return (
-    <div className="mx-auto mt-24 max-w-sm">
+    <div className="mx-auto max-w-sm">
       <h2 className="text-center mt-2 text-xl font-medium leading-7 sm:mt-3 sm:text-2xl">
         Create a Ticket
       </h2>

@@ -92,11 +92,16 @@ const PortfolioTable = () => {
 
   return (
     <>
-      <div className="p-5 text-3xl font-semibold text-left text-gray-900">
-        <h2>My Portfolio: ${portfolio && portfolioValue.toFixed(2)}</h2>
-        <p className="mt-1 text-sm font-normal text-gray-700">
-          Browse a list of your assets below
-        </p>
+      <div className="flex h-1/3 md:justify-evenly md:items-center md:mb-12">
+        <div className="p-5 text-3xl font-semibold text-left text-gray-900">
+          <h2>My Portfolio: ${portfolio && portfolioValue.toFixed(2)}</h2>
+          <p className="mt-1 text-sm font-normal text-gray-700">
+            Browse a list of your assets below
+          </p>
+        </div>
+        <div className="mb-2 hidden md:block">
+          <img src="../../images/undraw-savings.svg" className="w-80" />
+        </div>
       </div>
       <div className="overflow-x-auto px-5">
         <table className="w-full text-sm text-left text-gray-700 dark:text-gray-400">

@@ -10,6 +10,7 @@ import Ticket from "./routes/Ticket";
 import { UserAuth } from "./context/AuthContext";
 import ErrorDisplay from "./components/ErrorDisplay";
 import ProtectedRoute from "./ProtectRoute/ProtectedRoute";
+import TicketHistory from "./components/TicketHistory";
 
 function App() {
   const [user] = UserAuth();
@@ -26,6 +27,7 @@ function App() {
           <Route path="/watchlist" element={<Watchlist />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/portfolio/ticket" element={<Ticket />} />
+          <Route path="/portfolio/history" element={<TicketHistory />} />
         </Route>
         <Route
           path="*"

@@ -17,7 +17,9 @@ const PortfolioTable = () => {
       );
       if (response.data) {
         setPortfolio(response.data);
-        return FetchPrice();
+        if (portfolio) {
+          FetchPrice();
+        }
       }
     } catch (error) {
       console.log(error.message);
@@ -32,7 +34,10 @@ const PortfolioTable = () => {
         "http://localhost:8080/markets/crypto"
       );
       setMarketData(response.data);
+      console.log(marketData);
       if (marketData) {
+        console.log("After marketData exists");
+        console.log(marketData);
         const totalPortfolioValue = portfolio.currentAssets.reduce(
           (total, asset) => {
             switch (asset.name) {

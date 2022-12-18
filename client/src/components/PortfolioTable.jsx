@@ -82,12 +82,7 @@ const PortfolioTable = () => {
     return <ErrorDisplay error={error} />;
   }
 
-  if (
-    !show ||
-    (portfolio &&
-      portfolio.currentAssets.some((asset) => asset.value > 0) &&
-      !portfolioValue)
-  ) {
+  if (!show) {
     return (
       <div className="container mx-auto flex justify-center mt-36">
         <LoadingIcon />

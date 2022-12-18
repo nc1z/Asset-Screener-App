@@ -22,7 +22,7 @@ const TicketForm = () => {
         }
       );
       if (response.data) {
-        navigate("/portfolio");
+        navigate("/portfolio/history");
       }
     } catch (error) {
       console.log(error.message);
@@ -141,6 +141,14 @@ const TicketForm = () => {
             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-neob-green-400 hover:bg-neob-green-600"
           >
             Submit Ticket
+          </button>
+        </div>
+        <div className="mt-2">
+          <button
+            onClick={() => navigate("/portfolio/history")}
+            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-red-400 hover:bg-red-500"
+          >
+            Cancel Transaction
           </button>
         </div>
       </form>

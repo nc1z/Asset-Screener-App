@@ -72,44 +72,42 @@ const Watching = () => {
   }
 
   return (
-    <table className="w-full my-20 text-sm text-left text-gray-700 dark:text-gray-400">
-      <caption className="p-5 text-lg font-semibold text-left text-gray-900">
-        Your Watchlist
-        <p className="mt-1 text-sm font-normal text-gray-700">
-          Browse a list of your saved assets
-        </p>
-      </caption>
-      <thead className="text-xs text-gray-700 uppercase">
-        <tr>
-          <th className="px-4 py-2">Symbol</th>
-          <th className="px-4 py-2">Ticker</th>
-          <th className="px-4 py-2"></th>
-          <th className="px-4 py-2">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {assets &&
-          assets.map((asset) => (
-            <tr
-              key={asset.coin}
-              className="border-b border-slate-500/20 text-gray-800 hover:bg-gray-500/10"
-            >
-              <td className="px-4 py-2">{asset.coin}</td>
-              <td className="px-4 py-2 uppercase">{asset.symbol}</td>
-              <td className="px-4 py-2">
-                <img src={asset.image} className="w-8" />
-              </td>
-
-              <td className="px-4 py-2">
-                <MdDelete
-                  onClick={() => handleDelete(asset)}
-                  className="cursor-pointer"
-                />
-              </td>
+    <>
+      <div className="overflow-x-auto px-5 w-full">
+        <table className="w-full text-sm text-left text-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase">
+            <tr>
+              <th className="px-4 py-2">Symbol</th>
+              <th className="px-4 py-2">Ticker</th>
+              <th className="px-4 py-2"></th>
+              <th className="px-4 py-2">Action</th>
             </tr>
-          ))}
-      </tbody>
-    </table>
+          </thead>
+          <tbody>
+            {assets &&
+              assets.map((asset) => (
+                <tr
+                  key={asset.coin}
+                  className="border-b border-slate-500/20 text-gray-800 hover:bg-gray-500/10"
+                >
+                  <td className="px-4 py-2">{asset.coin}</td>
+                  <td className="px-4 py-2 uppercase">{asset.symbol}</td>
+                  <td className="px-4 py-2">
+                    <img src={asset.image} className="w-8" />
+                  </td>
+
+                  <td className="px-4 py-2">
+                    <MdDelete
+                      onClick={() => handleDelete(asset)}
+                      className="cursor-pointer"
+                    />
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 

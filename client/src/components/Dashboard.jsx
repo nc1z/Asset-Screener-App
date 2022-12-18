@@ -80,7 +80,7 @@ const Dashboard = () => {
                 ${asset.market_cap.toLocaleString()}
               </td>
               <td className="px-4 py-2">
-                <Saved />
+                <Saved asset={asset} />
               </td>
             </tr>
           ))}

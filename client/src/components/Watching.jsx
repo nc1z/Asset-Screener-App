@@ -4,6 +4,7 @@ import ErrorDisplay from "./ErrorDisplay";
 import { MdDelete } from "react-icons/md";
 import LoadingIcon from "./LoadingIcon";
 import axios from "axios";
+import notify from "../functions/notify";
 
 const Watching = () => {
   const [assets, setAssets] = useState("");
@@ -21,6 +22,36 @@ const Watching = () => {
       console.log(error.message);
       console.log(error.response.data.error);
       setError(error.response.data.error);
+    }
+  };
+
+  const handleDelete = async (asset) => {
+    try {
+      const { data: response } = await axios.delete(
+        "http://localhost:8080/details/watchlist",
+        {
+          data: {
+            symbol: asset.symbol,
+            coin: asset.coin,
+            image: asset.image,
+          },
+        }
+      );
+
+      if (response.data) {
+        setAssets(response.data.items);
+        notify({
+          success: "Removed from watchlist",
+          error: "",
+        });
+      }
+    } catch (error) {
+      console.log(error.message);
+      console.log(error.response.data);
+      notify({
+        success: "",
+        error: error.response.data.error,
+      });
     }
   };
 
@@ -60,7 +91,7 @@ const Watching = () => {
         {assets &&
           assets.map((asset) => (
             <tr
-              key={asset.id}
+              key={asset.coin}
               className="border-b border-slate-500/20 text-gray-800 hover:bg-gray-500/10"
             >
               <td className="px-4 py-2">{asset.coin}</td>
@@ -70,7 +101,10 @@ const Watching = () => {
               </td>
 
               <td className="px-4 py-2">
-                <MdDelete />
+                <MdDelete
+                  onClick={() => handleDelete(asset)}
+                  className="cursor-pointer"
+                />
               </td>
             </tr>
           ))}

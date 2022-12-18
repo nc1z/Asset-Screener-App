@@ -76,7 +76,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/home"
-                onClick={() => setMenuOpen(!menuOpen)}
+                onClick={() => setMenuOpen(false)}
                 className="block py-2 pl-3 pr-4rounded md:p-0 md:hover:text-white text-gray-200 hover:bg-zinc-700 hover:text-white md:hover:bg-transparent border-gray-700 md:hover:underline hover:underline-offset-8 hover:decoration-emerald-600"
               >
                 Home
@@ -85,7 +85,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/watchlist"
-                onClick={() => setMenuOpen(!menuOpen)}
+                onClick={() => setMenuOpen(false)}
                 className="block py-2 pl-3 pr-4rounded md:p-0 md:hover:text-white text-gray-200 hover:bg-zinc-700 hover:text-white md:hover:bg-transparent border-gray-700 md:hover:underline hover:underline-offset-8 hover:decoration-emerald-600"
               >
                 Watchlist
@@ -94,7 +94,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/portfolio"
-                onClick={() => setMenuOpen(!menuOpen)}
+                onClick={() => setMenuOpen(false)}
                 className="block py-2 pl-3 pr-4rounded md:p-0 md:hover:text-white text-gray-200 hover:bg-zinc-700 hover:text-white md:hover:bg-transparent border-gray-700 md:hover:underline hover:underline-offset-8 hover:decoration-emerald-600"
               >
                 Portfolio
@@ -103,7 +103,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/account"
-                onClick={() => setMenuOpen(!menuOpen)}
+                onClick={() => setMenuOpen(false)}
                 className="block py-2 pl-3 pr-4rounded md:p-0 md:hover:text-white text-gray-200 hover:bg-zinc-700 hover:text-white md:hover:bg-transparent border-gray-700 md:hover:underline hover:underline-offset-8 hover:decoration-emerald-600"
               >
                 Account

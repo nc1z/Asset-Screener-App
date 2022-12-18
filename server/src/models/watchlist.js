@@ -9,15 +9,15 @@ const watchlistSchema = new Schema(
       trim: true,
       lowercase: true,
       required: true,
-      unique: true
+      unique: true,
     },
     items: [
-        {
-            symbol: String,
-            coin: String,
-            image: String,
-        }
-    ]
+      {
+        symbol: String,
+        coin: String,
+        image: String,
+      },
+    ],
   },
   { timestamps: true }
 );

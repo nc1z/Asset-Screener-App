@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+import notify from "../functions/notify";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,6 +19,10 @@ const Navbar = () => {
       loading: false,
     });
     localStorage.removeItem("token");
+    notify({
+      success: "Logout Success",
+      error: "",
+    });
     navigate("/");
   };
   return (

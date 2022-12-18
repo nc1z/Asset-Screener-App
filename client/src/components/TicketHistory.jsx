@@ -40,43 +40,49 @@ const TicketHistory = () => {
     );
   }
   return (
-    <div className="container mx-auto my-20 flex flex-col">
-      <Link to="/portfolio">Back</Link>
-      <Link to="/portfolio/ticket">New Ticket</Link>
-      <table className="w-full text-sm text-left text-gray-700 dark:text-gray-400">
-        <caption className="p-5 text-3xl font-semibold text-left text-gray-900">
-          Transaction history
-          <p className="mt-1 text-sm font-normal text-gray-700">
-            Browse a list of your tickets below
-          </p>
-        </caption>
-        <thead className="text-xs text-gray-700 uppercase">
-          <tr>
-            <th className="px-4 py-2">Asset</th>
-            <th className="px-4 py-2">Order</th>
-            <th className="px-4 py-2">Quantity</th>
-            <th className="px-4 py-2">Date/Time of Execution</th>
-            <th className="px-4 py-2">Transaction Id</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tickets &&
-            tickets
-              .map((ticket) => (
-                <tr
-                  key={ticket.ticketid}
-                  className="border-b border-slate-500/20 text-gray-800 hover:bg-gray-500/10"
-                >
-                  <td className="px-4 py-2">{ticket.asset}</td>
-                  <td className="px-4 py-2">{ticket.order}</td>
-                  <td className="px-4 py-2">{ticket.amount}</td>
-                  <td className="px-4 py-2">{ticket.datetime}</td>
-                  <td className="px-4 py-2">{ticket.ticketid}</td>
-                </tr>
-              ))
-              .reverse()}
-        </tbody>
-      </table>
+    <div className="container mx-auto my-20">
+      <div className="flex gap-4 mx-5">
+        <Link to="/portfolio">Back</Link>
+        <Link to="/portfolio/ticket">New Ticket</Link>
+      </div>
+      <div className="p-5 text-3xl font-semibold text-left text-gray-900">
+        <h2>Transaction history</h2>
+        <p className="mt-1 text-sm font-normal text-gray-700">
+          Browse a list of your tickets below
+        </p>
+      </div>
+      <div className="overflow-x-auto px-5">
+        <table className="w-full text-sm text-left text-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase">
+            <tr>
+              <th className="px-4 py-2">Asset</th>
+              <th className="px-4 py-2">Order</th>
+              <th className="px-4 py-2">Quantity</th>
+              <th className="px-4 py-2">Date/Time of Execution</th>
+              <th className="px-4 py-2">Transaction Id</th>
+              <th className="px-4 py-2">Transaction Id</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tickets &&
+              tickets
+                .map((ticket) => (
+                  <tr
+                    key={ticket.ticketid}
+                    className="border-b border-slate-500/20 text-gray-800 hover:bg-gray-500/10"
+                  >
+                    <td className="px-4 py-2">{ticket.asset}</td>
+                    <td className="px-4 py-2">{ticket.order}</td>
+                    <td className="px-4 py-2">{ticket.amount}</td>
+                    <td className="px-4 py-2">{ticket.datetime}</td>
+                    <td className="px-4 py-2">{ticket.ticketid}</td>
+                    <td className="px-4 py-2">{ticket.ticketid}</td>
+                  </tr>
+                ))
+                .reverse()}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

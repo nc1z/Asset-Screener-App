@@ -67,19 +67,14 @@ router.put("/watchlist", checkAuth, async (req, res) => {
         error: "Asset Already in Watchlist",
       });
     }
-    const watchlist = {
-      symbol: req.body.symbol,
-      coin: req.body.coin,
-      image: req.body.image,
-    };
     const updatedWatchlist = await Watchlist.findOneAndUpdate(
       { email: req.user },
       {
         $push: {
-          items: watchlist,
+          items: req.body,
         },
-        new: true,
-      }
+      },
+      { new: true }
     );
     if (!updatedWatchlist) {
       return res.status(400).json({

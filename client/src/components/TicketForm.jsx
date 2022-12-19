@@ -15,7 +15,7 @@ const TicketForm = () => {
   const submitTicket = async () => {
     try {
       const { data: response } = await axios.put(
-        "http://localhost:8080/details/portfolio",
+        "https://good-gray-dugong-yoke.cyclic.app/details/portfolio",
         {
           asset: asset,
           order: order,

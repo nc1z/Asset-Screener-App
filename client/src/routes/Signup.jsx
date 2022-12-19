@@ -15,7 +15,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const { data: response } = await axios.post(
-        "http://localhost:8080/auth/signup",
+        "https://good-gray-dugong-yoke.cyclic.app/auth/signup",
         {
           email,
           password,

@@ -12,10 +12,7 @@ const Watchlist = () => {
       </div>
       <div className="flex flex-col md:flex-row gap-12 items-center md:justify-evenly mx-auto overflow-x-auto relative">
         <Watching />
-        <img
-          src="../../images/undraw-crypto.svg"
-          className="w-2/3 h-1/2 md:w-1/2"
-        />
+        <img src="/images/undraw-crypto.svg" className="w-2/3 h-1/2 md:w-1/2" />
       </div>
     </div>
   );

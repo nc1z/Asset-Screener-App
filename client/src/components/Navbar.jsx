@@ -30,7 +30,7 @@ const Navbar = () => {
       <div className="container flex flex-wrap items-center justify-between mx-auto">
         <Link to="/home" className="flex items-center">
           <img
-            src="../../images/bar-chart.png"
+            src="/images/bar-chart.png"
             className="h-6 mr-3 sm:h-9"
             alt="Asset Screener Logo"
           />

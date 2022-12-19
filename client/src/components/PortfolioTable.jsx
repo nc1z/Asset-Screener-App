@@ -100,7 +100,7 @@ const PortfolioTable = () => {
           </p>
         </div>
         <div className="mb-2 hidden md:block">
-          <img src="../../images/undraw-savings.svg" className="w-80" />
+          <img src="/images/undraw-savings.svg" className="w-80" />
         </div>
       </div>
       <div className="overflow-x-auto px-5">

@@ -44,7 +44,19 @@
 
 ### Project Image Snippet Here
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+Asset Screener app is an app built using MERN stack. The app allows users to signup, login, have a brief live overview of the most popular coins in the crypto markets, add their favorite coins to a watchlist and track their portfolio value.
+
+This is the main dashboard that the user sees upon a successful login. Data is real-time and obtained from API provided by Coingecko:
+
+![dashboard](https://user-images.githubusercontent.com/115219748/208384312-30029fec-71af-45fe-8385-7115b38a741f.png)
+
+User has the option to add coins to their portfolio and total portfolio value is calculated in real-time:
+
+![user portfolio page](https://user-images.githubusercontent.com/115219748/208383899-a0d0c2b8-74f3-4329-9f6c-541752d00a25.png)
+
+User has the option to add coins and remove coins to their watchlist:
+
+![watchlist](https://user-images.githubusercontent.com/115219748/208384606-8fcb3712-9884-4f62-b2b7-e0cdac28c6cb.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

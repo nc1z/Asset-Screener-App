@@ -150,6 +150,8 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Get User Data
+
 router.get("/user", checkAuth, async (req, res) => {
   try {
     const user = await User.findOne({ email: req.user });

@@ -179,19 +179,14 @@ router.delete("/watchlist", checkAuth, async (req, res) => {
         error: "No Watchlist Found",
       });
     }
-    const watchlist = {
-      symbol: req.body.symbol,
-      coin: req.body.coin,
-      image: req.body.image,
-    };
     const updatedWatchlist = await Watchlist.findOneAndUpdate(
       { email: req.user },
       {
         $pull: {
-          items: watchlist,
+          items: req.body,
         },
-        new: true,
-      }
+      },
+      { new: true }
     );
     if (!updatedWatchlist) {
       return res.status(400).json({

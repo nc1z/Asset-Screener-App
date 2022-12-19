@@ -13,7 +13,7 @@ const Watching = () => {
   const handleFetch = async () => {
     try {
       const { data: response } = await axios.get(
-        "http://localhost:8080/details/watchlist"
+        "https://good-gray-dugong-yoke.cyclic.app/details/watchlist"
       );
       if (response.data) {
         setAssets(response.data.items);
@@ -28,7 +28,7 @@ const Watching = () => {
   const handleDelete = async (asset) => {
     try {
       const { data: response } = await axios.delete(
-        "http://localhost:8080/details/watchlist",
+        "https://good-gray-dugong-yoke.cyclic.app/details/watchlist",
         {
           data: {
             symbol: asset.symbol,

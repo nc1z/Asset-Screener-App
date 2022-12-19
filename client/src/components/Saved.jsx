@@ -11,7 +11,7 @@ const Saved = ({ asset }) => {
   const handleSave = async () => {
     try {
       const { data: response } = await axios.put(
-        "http://localhost:8080/details/watchlist",
+        "https://good-gray-dugong-yoke.cyclic.app/details/watchlist",
         {
           symbol: asset.symbol,
           coin: asset.name,

@@ -12,7 +12,7 @@ const TicketHistory = () => {
   const FetchPortfolio = async () => {
     try {
       const { data: response } = await axios.get(
-        "http://localhost:8080/details/portfolio"
+        "https://good-gray-dugong-yoke.cyclic.app/details/portfolio"
       );
       if (response.data) {
         return setTickets(response.data.tickets);

@@ -25,7 +25,7 @@ export const UserProvider = ({ children }) => {
   const fetchUser = async () => {
     try {
       const { data: response } = await axios.get(
-        "http://localhost:8080/auth/user"
+        "https://good-gray-dugong-yoke.cyclic.app/auth/user"
       );
       if (response.data.user) {
         setUser({

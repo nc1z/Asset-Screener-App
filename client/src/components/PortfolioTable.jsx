@@ -15,7 +15,7 @@ const PortfolioTable = () => {
   const fetchPortfolio = async () => {
     try {
       const { data: response } = await axios.get(
-        "http://localhost:8080/details/portfolio"
+        "https://good-gray-dugong-yoke.cyclic.app/details/portfolio"
       );
       if (response.data) {
         setPortfolio(response.data);
@@ -31,7 +31,7 @@ const PortfolioTable = () => {
   const fetchPrice = async () => {
     try {
       const { data: response } = await axios.get(
-        "http://localhost:8080/markets/crypto"
+        "https://good-gray-dugong-yoke.cyclic.app/markets/crypto"
       );
       if (response.data) {
         setMarketData(response.data);

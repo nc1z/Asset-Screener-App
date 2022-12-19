@@ -1,6 +1,6 @@
 import express from "express";
 import { body, validationResult } from "express-validator";
-import User from "../models/user.js";
+import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import JWT from "jsonwebtoken";
 import checkAuth from "../middleware/checkAuth.js";
@@ -149,8 +149,6 @@ router.post("/login", async (req, res) => {
     });
   }
 });
-
-// Get User Data
 
 router.get("/user", checkAuth, async (req, res) => {
   try {

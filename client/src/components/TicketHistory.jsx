@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const TicketHistory = () => {
   const [tickets, setTickets] = useState("");
   const [error, setError] = useState("");
+  const [search, setSearch] = useState("");
 
   const FetchPortfolio = async () => {
     try {
@@ -22,6 +23,11 @@ const TicketHistory = () => {
       console.log(error.response.data.error);
       setError(error.response.data.error);
     }
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
   };
 
   useEffect(() => {
@@ -56,7 +62,17 @@ const TicketHistory = () => {
         </Link>
       </div>
       <div className="p-5 text-3xl font-semibold text-left text-gray-900">
-        <h2>Transaction history</h2>
+        <div>
+          <h2>Transaction history</h2>
+          <div>
+            <input
+              type="text"
+              placeholder="search here"
+              onChange={handleChange}
+              value={search}
+            ></input>
+          </div>
+        </div>
         <p className="mt-1 text-sm font-normal text-gray-700">
           Browse a list of your tickets below
         </p>

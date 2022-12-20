@@ -56,14 +56,14 @@ const TicketHistory = () => {
           New Ticket
         </Link>
       </div>
-      <div className="flex justify-between items-center mr-5">
+      <div className="flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center mr-5">
         <div className="p-5 text-3xl font-semibold text-left text-gray-900">
           <h2>Transaction history</h2>
           <p className="mt-1 text-sm font-normal text-gray-700">
             Browse a list of your tickets below
           </p>
         </div>
-        <div>
+        <div className="p-10 md:p-0">
           <input
             type="text"
             placeholder="Search Tickets"

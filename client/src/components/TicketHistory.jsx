@@ -25,11 +25,6 @@ const TicketHistory = () => {
     }
   };
 
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSearch(e.target.value);
-  };
-
   useEffect(() => {
     FetchPortfolio();
   }, []);
@@ -61,21 +56,21 @@ const TicketHistory = () => {
           New Ticket
         </Link>
       </div>
-      <div className="p-5 text-3xl font-semibold text-left text-gray-900">
-        <div>
+      <div className="flex justify-between items-center mr-5">
+        <div className="p-5 text-3xl font-semibold text-left text-gray-900">
           <h2>Transaction history</h2>
-          <div>
-            <input
-              type="text"
-              placeholder="search here"
-              onChange={handleChange}
-              value={search}
-            ></input>
-          </div>
+          <p className="mt-1 text-sm font-normal text-gray-700">
+            Browse a list of your tickets below
+          </p>
         </div>
-        <p className="mt-1 text-sm font-normal text-gray-700">
-          Browse a list of your tickets below
-        </p>
+        <div>
+          <input
+            type="text"
+            placeholder="Search Tickets"
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+          />
+        </div>
       </div>
       <div className="overflow-x-auto px-5">
         <table className="w-full text-sm text-left text-gray-700 dark:text-gray-400">
@@ -91,6 +86,20 @@ const TicketHistory = () => {
           <tbody>
             {tickets &&
               tickets
+                .filter((ticket) => {
+                  if (search === "") {
+                    return ticket;
+                  } else if (
+                    ticket.asset.toLowerCase().includes(search.toLowerCase()) ||
+                    ticket.order.toLowerCase().includes(search.toLowerCase()) ||
+                    ticket.datetime
+                      .toLowerCase()
+                      .includes(search.toLowerCase()) ||
+                    ticket.ticketid.toLowerCase().includes(search.toLowerCase())
+                  ) {
+                    return ticket;
+                  }
+                })
                 .map((ticket) => (
                   <tr
                     key={ticket.ticketid}

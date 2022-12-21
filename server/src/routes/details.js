@@ -122,7 +122,7 @@ router.put("/portfolio", checkAuth, async (req, res) => {
       });
     }
 
-    if (req.body.amount < 0 || typeof req.body.amount !== "number") {
+    if (req.body.amount < 0 || isNaN(req.body.amount)) {
       return res.status(400).json({
         data: "",
         error: "Invalid Input Amount",

@@ -103,6 +103,32 @@ router.put("/portfolio", checkAuth, async (req, res) => {
         error: "No Portfolio Found",
       });
     }
+
+    if (
+      req.body.asset !== "BTC" &&
+      req.body.asset !== "ETH" &&
+      req.body.asset !== "USDT"
+    ) {
+      return res.status(400).json({
+        data: "",
+        error: "Invalid Asset",
+      });
+    }
+
+    if (req.body.order !== "Allocate" && req.body.order !== "Remove") {
+      return res.status(400).json({
+        data: "",
+        error: "Invalid Order Type",
+      });
+    }
+
+    if (req.body.amount < 0 || typeof req.body.amount !== "number") {
+      return res.status(400).json({
+        data: "",
+        error: "Invalid Input Amount",
+      });
+    }
+
     const selectedAsset = userPortfolio.currentAssets.filter(
       (asset) => asset.name == req.body.asset
     );

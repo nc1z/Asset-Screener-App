@@ -42,9 +42,7 @@
 
 ## About The Project
 
-### Project Image Snippet Here
-
-Asset Screener app is an app built using MERN stack. The app allows users to signup, login, have a brief live overview of the most popular coins in the crypto markets, add their favorite coins to a watchlist and track their portfolio value.
+Asset Screener app is an app built using the MERN stack. The app allows users to signup, login, have a brief live overview of the most popular coins in the crypto markets, add their favorite coins to a watchlist and track their portfolio value.
 
 This is the main dashboard that the user sees upon a successful login. Data is real-time and obtained from API provided by Coingecko:
 
@@ -72,7 +70,7 @@ User has the option to add coins and remove coins to their watchlist:
 - ![HTML5 Badge](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=fff&style=for-the-badge)
 - ![CSS3 Badge](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=fff&style=for-the-badge)
 - ![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=for-the-badge)
-- ![Netlify Badge](https://img.shields.io/badge/Netlify-00C7B7?logo=netlify&logoColor=fff&style=for-the-badge)
+- Netlify for client hosting
 - Cyclic for Server Deployment
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -81,8 +79,44 @@ User has the option to add coins and remove coins to their watchlist:
 
 ## Roadmap
 
-- [x] Completed Task
-- [] Uncompleted Task
+- [x] Client
+
+  - Styles and CSS
+    - Global Navbar
+    - CSS for light/dark
+  - Routing
+  - Login/Signup Logic
+  - JWT, auth headers, ContextProvider
+  - Private Routes / Redirects
+  - Portfolio + Coingecko calculation & logic
+  - Ticket Submission Logic
+  - Ticket Search
+  - Ticket History
+  - Watchlist add/remove logic
+  - Prevent excessive api calls by disabling buttons onClick
+
+- [x] Server
+
+  - POST Endpoints
+    - Signup
+    - Login
+  - GET Endpoints
+    - Get user details
+    - Get user watchlist
+    - Get user portfolio
+    - Get coingecko data
+  - PUT Endpoints
+    - Add to watchlist
+    - Add transaction to portfolio + add/remove assets/qty
+  - DELETE Endpoints
+    - Remove from watchlist
+
+- [ ] Additional Features
+
+  - Pagination
+
+- [x] Bug Fixes & Improvements
+  - Backend form validation
 
 See the [open issues](https://github.com/nc1z/Asset-Screener-App) for a full list of proposed features (and known issues).
 

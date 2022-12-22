@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/crypto", checkAuth, async (req, res) => {
   let selectedPage = req.query.page;
-  if (!selectedPage) {
+  if (!selectedPage || selectedPage < 2) {
     selectedPage = "1";
   }
   try {

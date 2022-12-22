@@ -23,7 +23,7 @@ const Home = () => {
         <Dashboard page={page} />
       </div>
       <div className="m-10">
-        <Pagination />
+        <Pagination page={page} setPage={setPage} />
       </div>
     </div>
   );

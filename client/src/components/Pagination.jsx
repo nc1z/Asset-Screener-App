@@ -1,43 +1,57 @@
 import React from "react";
 
-const Pagination = () => {
+const Pagination = ({ page, setPage }) => {
   return (
     <nav>
-      <ul class="inline-flex -space-x-px">
+      <ul className={`inline-flex -space-x-px`}>
         <li>
-          <span class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700">
+          <button
+            className={`px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg rounded-r-none hover:bg-gray-100 hover:text-gray-700`}
+          >
             Previous
-          </span>
+          </button>
         </li>
         <li>
-          <span class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+          <button
+            className={`px-3 py-2 leading-tight text-gray-500 bg-white border rounded-none border-gray-300 hover:bg-gray-100 hover:text-gray-700`}
+          >
             1
-          </span>
+          </button>
         </li>
         <li>
-          <span class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+          <button
+            className={`px-3 py-2 leading-tight text-gray-500 bg-white border rounded-none border-gray-300 hover:bg-gray-100 hover:text-gray-700`}
+          >
             2
-          </span>
+          </button>
         </li>
         <li>
-          <span class="px-3 py-2 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
+          <button
+            className={`px-3 py-2 leading-tight bg-blue-50 text-blue-600 hover:bg-blue-100 hover:text-blue-700 border rounded-none border-gray-300`}
+          >
             3
-          </span>
+          </button>
         </li>
         <li>
-          <span class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+          <button
+            className={`px-3 py-2 leading-tight text-gray-500 bg-white border rounded-none border-gray-300 hover:bg-gray-100 hover:text-gray-700`}
+          >
             4
-          </span>
+          </button>
         </li>
         <li>
-          <span class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+          <button
+            className={`px-3 py-2 leading-tight text-gray-500 bg-white border rounded-none border-gray-300 hover:bg-gray-100 hover:text-gray-700`}
+          >
             5
-          </span>
+          </button>
         </li>
         <li>
-          <span class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700">
+          <button
+            className={`px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-none rounded-r-lg hover:bg-gray-100 hover:text-gray-700`}
+          >
             Next
-          </span>
+          </button>
         </li>
       </ul>
     </nav>

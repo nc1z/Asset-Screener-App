@@ -2,6 +2,8 @@ import React from "react";
 import Dashboard from "../components/Dashboard";
 
 const Home = () => {
+  const [page, setPage] = useState("1");
+
   return (
     <div className="container mx-auto my-20">
       <div className="p-5 text-3xl font-semibold text-left text-gray-900">
@@ -17,7 +19,7 @@ const Home = () => {
         </p>
       </div>
       <div className="overflow-x-auto px-5">
-        <Dashboard />
+        <Dashboard page={page} />
       </div>
     </div>
   );

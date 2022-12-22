@@ -5,14 +5,14 @@ import Saved from "./Saved";
 import LoadingIcon from "./LoadingIcon";
 import ErrorDisplay from "./ErrorDisplay";
 
-const Dashboard = () => {
+const Dashboard = ({ page }) => {
   const [assets, setAssets] = useState("");
   const [error, setError] = useState("");
 
   const handleFetch = async () => {
     try {
       const { data: response } = await axios.get(
-        "https://good-gray-dugong-yoke.cyclic.app/markets/crypto"
+        `https://good-gray-dugong-yoke.cyclic.app/markets/crypto?page=${page}`
       );
       if (response.data) {
         return setAssets(response.data);

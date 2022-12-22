@@ -25,8 +25,9 @@ const Dashboard = ({ page }) => {
   };
 
   useEffect(() => {
+    setAssets("");
     handleFetch();
-  }, []);
+  }, [page]);
 
   if (error) {
     return <ErrorDisplay error={error} />;
@@ -57,27 +58,27 @@ const Dashboard = ({ page }) => {
         {assets &&
           assets.map((asset) => (
             <tr
-              key={asset.id}
+              key={asset?.id}
               className="border-b border-slate-500/20 text-gray-800 hover:bg-gray-500/10"
             >
-              <td className="px-4 py-2">{asset.name}</td>
-              <td className="px-4 py-2 uppercase">{asset.symbol}</td>
+              <td className="px-4 py-2">{asset?.name}</td>
+              <td className="px-4 py-2 uppercase">{asset?.symbol}</td>
               <td className="px-4 py-2">
-                <img src={asset.image} className="w-8" />
+                <img src={asset?.image} className="w-8" />
               </td>
-              <td className="px-4 py-2">${asset.current_price}</td>
+              <td className="px-4 py-2">${asset?.current_price}</td>
               <td
                 className="px-4 py-2"
                 style={
-                  asset.price_change_24h < 0
+                  asset?.price_change_24h < 0
                     ? { color: "red" }
                     : { color: "green" }
                 }
               >
-                {asset.price_change_24h.toFixed(7)}
+                {asset?.price_change_24h?.toFixed(7)}
               </td>
               <td className="px-4 py-2">
-                ${asset.market_cap.toLocaleString()}
+                ${asset?.market_cap?.toLocaleString()}
               </td>
               <td className="px-4 py-2">
                 <Saved asset={asset} />

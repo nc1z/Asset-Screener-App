@@ -29,6 +29,8 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#initial design mockups">Initial Wireframe Mockups</a></li>
+        <li><a href="#live snippets">Working App Snippets</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -43,6 +45,30 @@
 ## About The Project
 
 Asset Screener app is an app built using the MERN stack. The app allows users to signup, login, have a brief live overview of the most popular coins in the crypto markets, add their favorite coins to a watchlist and track their portfolio value.
+
+<!-- INITIAL WIREFRAME MOCKUPS -->
+
+## Initial Wireframe Mockups
+
+Login page:
+
+![login wireframe](https://user-images.githubusercontent.com/115219748/209041174-8cad7a87-f2dc-453e-85d3-86d670f066ab.PNG)
+
+Main user dashboard:
+
+![dashboard wireframe](https://user-images.githubusercontent.com/115219748/209042162-8cb6a10f-82e4-414c-b29c-2d5d744a4f19.PNG)
+
+User watchlist:
+
+![watchlist wireframe](https://user-images.githubusercontent.com/115219748/209042004-8b30f7cb-aad9-40aa-a8f0-94014abbdcff.PNG)
+
+User portfolio:
+
+![user portfolio](https://user-images.githubusercontent.com/115219748/209042671-be4836fd-77e7-48ab-a0ff-f7934f371a05.PNG)
+
+<!-- WORKING APP SNIPPETS -->
+
+## Working App Snippets
 
 This is the main dashboard that the user sees upon a successful login. Data is real-time and obtained from API provided by Coingecko:
 

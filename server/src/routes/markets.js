@@ -5,9 +5,13 @@ import axios from "axios";
 const router = express.Router();
 
 router.get("/crypto", checkAuth, async (req, res) => {
+  let selectedPage = req.query.page;
+  if (!selectedPage) {
+    selectedPage = "1";
+  }
   try {
     const response = await axios.get(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=50&page=1&sparkline=false",
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=50&page=${selectedPage}&sparkline=false`,
       {
         headers: {
           "Accept-Encoding": "gzip,deflate,compress",

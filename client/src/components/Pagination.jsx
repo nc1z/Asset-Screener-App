@@ -1,4 +1,5 @@
 import React from "react";
+import PaginationButton from "./PaginationButton";
 
 const Pagination = ({ page, setPage }) => {
   return (
@@ -6,20 +7,19 @@ const Pagination = ({ page, setPage }) => {
       <ul className={`inline-flex -space-x-px`}>
         <li>
           <button
+            onClick={() => page > 1 && setPage((page - 1).toString())}
             className={`px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg rounded-r-none hover:bg-gray-100 hover:text-gray-700`}
           >
             Previous
           </button>
         </li>
         <li>
-          <button
-            className={`px-3 py-2 leading-tight text-gray-500 bg-white border rounded-none border-gray-300 hover:bg-gray-100 hover:text-gray-700`}
-          >
-            1
-          </button>
+          <PaginationButton page={page} setPage={setPage} value={"1"} />
         </li>
         <li>
           <button
+            value="2"
+            onClick={(e) => setPage(e.target.value)}
             className={`px-3 py-2 leading-tight text-gray-500 bg-white border rounded-none border-gray-300 hover:bg-gray-100 hover:text-gray-700`}
           >
             2
@@ -27,13 +27,17 @@ const Pagination = ({ page, setPage }) => {
         </li>
         <li>
           <button
-            className={`px-3 py-2 leading-tight bg-blue-50 text-blue-600 hover:bg-blue-100 hover:text-blue-700 border rounded-none border-gray-300`}
+            value="3"
+            onClick={(e) => setPage(e.target.value)}
+            className={`px-3 py-2 leading-tight text-gray-500 bg-white border rounded-none border-gray-300 hover:bg-gray-100 hover:text-gray-700`}
           >
             3
           </button>
         </li>
         <li>
           <button
+            value="4"
+            onClick={(e) => setPage(e.target.value)}
             className={`px-3 py-2 leading-tight text-gray-500 bg-white border rounded-none border-gray-300 hover:bg-gray-100 hover:text-gray-700`}
           >
             4
@@ -41,6 +45,8 @@ const Pagination = ({ page, setPage }) => {
         </li>
         <li>
           <button
+            value="5"
+            onClick={(e) => setPage(e.target.value)}
             className={`px-3 py-2 leading-tight text-gray-500 bg-white border rounded-none border-gray-300 hover:bg-gray-100 hover:text-gray-700`}
           >
             5
@@ -48,6 +54,7 @@ const Pagination = ({ page, setPage }) => {
         </li>
         <li>
           <button
+            onClick={() => page < 6 && setPage((page + 1).toString())}
             className={`px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-none rounded-r-lg hover:bg-gray-100 hover:text-gray-700`}
           >
             Next

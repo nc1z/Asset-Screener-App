@@ -17,44 +17,20 @@ const Pagination = ({ page, setPage }) => {
           <PaginationButton page={page} setPage={setPage} value={"1"} />
         </li>
         <li>
-          <button
-            value="2"
-            onClick={(e) => setPage(e.target.value)}
-            className={`px-3 py-2 leading-tight text-gray-500 bg-white border rounded-none border-gray-300 hover:bg-gray-100 hover:text-gray-700`}
-          >
-            2
-          </button>
+          <PaginationButton page={page} setPage={setPage} value={"2"} />
+        </li>
+        <li>
+          <PaginationButton page={page} setPage={setPage} value={"3"} />
+        </li>
+        <li>
+          <PaginationButton page={page} setPage={setPage} value={"4"} />
+        </li>
+        <li>
+          <PaginationButton page={page} setPage={setPage} value={"5"} />
         </li>
         <li>
           <button
-            value="3"
-            onClick={(e) => setPage(e.target.value)}
-            className={`px-3 py-2 leading-tight text-gray-500 bg-white border rounded-none border-gray-300 hover:bg-gray-100 hover:text-gray-700`}
-          >
-            3
-          </button>
-        </li>
-        <li>
-          <button
-            value="4"
-            onClick={(e) => setPage(e.target.value)}
-            className={`px-3 py-2 leading-tight text-gray-500 bg-white border rounded-none border-gray-300 hover:bg-gray-100 hover:text-gray-700`}
-          >
-            4
-          </button>
-        </li>
-        <li>
-          <button
-            value="5"
-            onClick={(e) => setPage(e.target.value)}
-            className={`px-3 py-2 leading-tight text-gray-500 bg-white border rounded-none border-gray-300 hover:bg-gray-100 hover:text-gray-700`}
-          >
-            5
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={() => page < 6 && setPage((page + 1).toString())}
+            onClick={() => page < 5 && setPage((parseInt(page) + 1).toString())}
             className={`px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-none rounded-r-lg hover:bg-gray-100 hover:text-gray-700`}
           >
             Next

@@ -22,7 +22,7 @@ const Home = () => {
       <div className="overflow-x-auto px-5">
         <Dashboard page={page} />
       </div>
-      <div className="m-10">
+      <div className="mx-5 my-10 md:m-10">
         <Pagination page={page} setPage={setPage} />
       </div>
     </div>
